@@ -1,14 +1,16 @@
 .hero {
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
   &__img {
-    background-image: url(../../bergen.jpg);
+    background-image: url(../../bergen2.jpg);
     background-position: center;
     background-size: cover;
     width: 80%;
     height: 400px;
-    padding-top: 5rem;
+    padding-top: 4rem;
     border-radius: 5px;
+    position: relative;
   }
   &__text {
     display: flex;
@@ -16,6 +18,7 @@
     align-items: center;
     position: relative;
     z-index: 2;
+    color: white;
   }
   &__transparent {
     background-color: white;
@@ -28,13 +31,15 @@
     border-radius: 5px;
   }
   &__search {
-    border: solid 1px $secondary-color;
+    border: solid 2px $secondary-color;
     border-radius: 20px;
     opacity: 0.7;
-    width: 500px;
+    width: 600px;
+    height: 1.5rem;
+    margin-top: 0.5rem;
   }
   &__drop {
     font-size: 20px;
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
 }

@@ -13,7 +13,6 @@ function Hero() {
             <input type="search" id="hotelSearch" className="hero__search" />
           </div>
         </div>
-        <div className="hero__transparent"></div>
       </div>
     </div>
   );
