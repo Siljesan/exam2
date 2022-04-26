@@ -15,11 +15,11 @@ function Inspo() {
     fetchData().catch(console.error);
   });
   return (
-    <div className="inspo">
+    <div className="content">
       <Heading as={"h2"}>Get inspired</Heading>
-      <div className="inspoCards">
+      <div className="cards">
         {hotel.map((hotel, idx) => {
-          return (
+          return hotel.attributes.featured ? (
             <div className="card" key={idx}>
               <img className="card__img" src={hotel.attributes.coverimageurl} />
               <div className="card__text">
@@ -27,6 +27,8 @@ function Inspo() {
                 <p>{hotel.attributes.punchline}</p>
               </div>
             </div>
+          ) : (
+            ""
           );
         })}
       </div>

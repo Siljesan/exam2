@@ -1,8 +1,13 @@
 import React from 'react'
+import HotelCards from '../components/HotelCards'
+import { Heading } from '../components/styles/StyledHeadings'
 
 function Hotels() {
   return (
-    <div>Hotels</div>
+    <div className='content'>
+    <Heading>Where to?</Heading>
+    <HotelCards />
+    </div>
   )
 }
 
