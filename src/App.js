@@ -6,6 +6,7 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Hotels from "./pages/Hotels";
 import Login from "./pages/Login";
+import Result from "./pages/Result";
 import "./sass/style.scss";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/hotels" element={<Hotels />} />
+          <Route path="/:location" element={<Result />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<Admin />} />

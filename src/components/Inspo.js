@@ -13,7 +13,12 @@ function Inspo() {
       setHotel(response.data.data);
     };
     fetchData().catch(console.error);
-  });
+  }, []);
+
+  if (hotel.length < 0) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="content">
       <Heading as={"h2"}>Get inspired</Heading>
