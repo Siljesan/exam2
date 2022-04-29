@@ -24,14 +24,14 @@ function HotelCards() {
     <div className="cards">
       {hotel.map((hotel, idx) => {
         return (
-          <Link to={`/${hotel.id}`}>
-            <div className="card" key={idx}>
+          <div className="card" key={idx}>
+            <Link to={`/${hotel.id}`}>
               <img className="card__img" src={hotel.attributes.coverimageurl} />
               <div className="card__text">
                 <Heading as={"h3"}>{hotel.attributes.title}</Heading>
               </div>
-            </div>
-          </Link>
+            </Link>
+          </div>
         );
       })}
     </div>

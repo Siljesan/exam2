@@ -1,21 +1,26 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import EnquiryModal from '../components/EnquiryModal';
 import { Heading } from '../components/styles/StyledHeadings';
 import { ESTABLISHMENT_URL } from '../utils/api';
+import { Modal } from "react-bootstrap";
+require("react-bootstrap/ModalHeader")
 
 function Result() {
     const { location } = useParams();
     const [hotel, setHotel] = useState({});
     const [error, setError] = useState(false);
+    const [modal, setModal] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
             const response = await axios.get(ESTABLISHMENT_URL + location);
+            console.log(response.data.data);
             setHotel(response.data.data);
         }
         fetchData().catch((error) => setError(error))
-    }, [location]);
+    }, []);
 
     if(error){
         return (
@@ -26,25 +31,26 @@ function Result() {
       );
     }
 
-    if(hotel.length === 0){
+    if(!hotel.hasOwnProperty("id")){
         return <div>Loading...</div>;
     }
 
-console.log(hotel.attributes.title);
+
   return (  
-  <>
- <Heading>{hotel.attributes.title}</Heading>
-<img src={hotel.attributes.coverimageurl} />
-<div>
-    <div>
-        <Heading as={"h3"}>{hotel.attributes.punchline}</Heading>
-        <p>{hotel.attributes.description}</p>
-    </div>
-    <div>
-        <button>Send Enquiry</button>
-    </div>
-</div>
-  </>
+  <div className='content'>
+    <Heading>{hotel.attributes.title}</Heading>
+    <img className='resultImg' src={hotel.attributes.coverimageurl} />
+        <div className='result'>
+            <div className='result__text'>
+                <Heading as={"h2"}>{hotel.attributes.punchline}</Heading>
+                <p>{hotel.attributes.description}</p>
+            </div>
+            <div className='result__btn'>
+                <button onClick={() => setModal(true)}>Send Enquiry</button>
+            </div>
+        </div>
+        <EnquiryModal show={modal} onHide={() => setModal(false)} />
+  </div>
   )
 }
 
