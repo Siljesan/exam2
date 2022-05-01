@@ -19,7 +19,7 @@ function EnquiryForm({ sendEnquiry }) {
   };
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className="enquiryForm" onSubmit={handleSubmit(onSubmit)}>
         <label>
           Enter your email:
           <input {...register("email")} placeholder="email..." id="email" />
@@ -34,7 +34,7 @@ function EnquiryForm({ sendEnquiry }) {
 
         <label>
           Enter additional information:
-          <input
+          <textarea
             {...register("information")}
             placeholder="write your message..."
             id="information"

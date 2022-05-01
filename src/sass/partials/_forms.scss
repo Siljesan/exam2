@@ -1,0 +1,14 @@
+.enquiryForm {
+  display: flex;
+  flex-direction: column;
+  label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  button {
+    border: solid 1px $secondary-color;
+    border-radius: 20px;
+    background-color: $complimentary-color;
+  }
+}
