@@ -23,13 +23,17 @@ function EnquiryForm({ sendEnquiry }) {
         <label>
           Enter your email:
           <input {...register("email")} placeholder="email..." id="email" />
-          {errors.email && <span>{errors.email.message}</span>}
+          {errors.email && (
+            <span className="enquiryForm__error">{errors.email.message}</span>
+          )}
         </label>
 
         <label>
           Enter date of visit:
           <input {...register("date")} placeholder="date..." id="date" />
-          {errors.date && <span>{errors.date.message}</span>}
+          {errors.date && (
+            <span className="enquiryForm__error">{errors.date.message}</span>
+          )}
         </label>
 
         <label>
@@ -39,7 +43,11 @@ function EnquiryForm({ sendEnquiry }) {
             placeholder="write your message..."
             id="information"
           />
-          {errors.information && <span>{errors.information.message}</span>}
+          {errors.information && (
+            <span className="enquiryForm__error">
+              {errors.information.message}
+            </span>
+          )}
         </label>
 
         <button>Send enquiry</button>

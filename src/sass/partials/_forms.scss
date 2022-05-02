@@ -11,4 +11,7 @@
     border-radius: 20px;
     background-color: $complimentary-color;
   }
+  &__error {
+    color: red;
+  }
 }
