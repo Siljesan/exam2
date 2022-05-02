@@ -13,8 +13,6 @@ function EnquiryForm({ sendEnquiry }) {
   });
 
   const onSubmit = (formData) => {
-    console.log("Form Data: ", formData);
-
     sendEnquiry(formData).catch(console.error);
   };
   return (

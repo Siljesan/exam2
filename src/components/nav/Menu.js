@@ -1,7 +1,17 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 
 function Menu() {
+  const [auth, setAuth] = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    setAuth(null);
+    navigate("/");
+  };
+
   return (
     <>
       <ul className="nav__list">
@@ -21,11 +31,20 @@ function Menu() {
             Contact us
           </NavLink>
         </li>
-        <li>
-          <Link className="nav__list--login" to="/login">
-            Login
-          </Link>
-        </li>
+
+        {auth ? (
+          <li>
+            <button onClick={logout} className="nav__list--login">
+              Log out
+            </button>
+          </li>
+        ) : (
+          <li>
+            <Link className="nav__list--login" to="/login">
+              Login
+            </Link>
+          </li>
+        )}
       </ul>
     </>
   );

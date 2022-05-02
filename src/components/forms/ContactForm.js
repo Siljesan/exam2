@@ -13,8 +13,6 @@ function ContactForm({ sendContact }) {
   });
 
   const onSubmit = (formData) => {
-    console.log("Form Data: ", formData);
-
     sendContact(formData).catch(console.error);
   };
   return (
