@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { EnquirySchema } from "../utils/Schemas";
+import { EnquirySchema } from "../../utils/Schemas";
 
 function EnquiryForm({ sendEnquiry }) {
   const {

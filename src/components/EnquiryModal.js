@@ -1,7 +1,7 @@
 import { Modal } from "react-bootstrap";
 import React from "react";
 import { Heading } from "./styles/StyledHeadings";
-import EnquiryForm from "./EnquiryForm";
+import EnquiryForm from "./forms/EnquiryForm";
 import { ENQUIRY_URL } from "../utils/api";
 import axios from "axios";
 require("react-bootstrap/ModalHeader");

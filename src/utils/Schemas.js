@@ -11,3 +11,15 @@ export const EnquirySchema = yup.object().shape({
     .required("Please enter additional information")
     .min(5, "The message must be at least 5 characters"),
 });
+
+export const ContactSchema = yup.object().shape({
+  email: yup
+    .string()
+    .required("Please enter an email address")
+    .email("Please enter a valid email address"),
+  subject: yup.string().required("Please enter subject"),
+  message: yup
+    .string()
+    .required("Please enter your message")
+    .min(5, "The message must be at least 5 characters"),
+});
