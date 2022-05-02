@@ -22,6 +22,16 @@
 
 .contactForm {
   @extend .enquiryForm;
+  &__error {
+    color: red;
+  }
   width: 50%;
   margin: 3rem 0rem 3rem 0rem;
+}
+
+.loginForm {
+  @extend .enquiryForm;
+  &__error {
+    color: red;
+  }
 }

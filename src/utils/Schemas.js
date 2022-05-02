@@ -23,3 +23,11 @@ export const ContactSchema = yup.object().shape({
     .required("Please enter your message")
     .min(5, "The message must be at least 5 characters"),
 });
+
+export const LoginSchema = yup.object().shape({
+  email: yup
+    .string()
+    .required("Please enter an email address")
+    .email("Please enter a valid email address"),
+  password: yup.string().required("Please enter password"),
+});
