@@ -2,7 +2,7 @@ import { Modal } from "react-bootstrap";
 import React from "react";
 import { Heading } from "./styles/StyledHeadings";
 import EnquiryForm from "./EnquiryForm";
-import { ENQUIRY_PATH } from "../utils/api";
+import { ENQUIRY_URL } from "../utils/api";
 import axios from "axios";
 require("react-bootstrap/ModalHeader");
 
@@ -15,7 +15,7 @@ function EnquiryModal(props) {
         information: formData.information,
       },
     };
-    const responseData = await axios.post(ENQUIRY_PATH, options);
+    const responseData = await axios.post(ENQUIRY_URL, options);
     console.log(responseData);
   };
 
