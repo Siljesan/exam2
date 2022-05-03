@@ -5,6 +5,17 @@
     border: solid 1px $secondary-color;
     border-radius: 5px;
     width: 45%;
-    padding: 1rem;
+    background-color: white;
+    box-shadow: 1px 1px 10px grey;
+    .heading {
+      background-color: $complimentary-color;
+      text-align: center;
+      border-bottom: solid 1px $secondary-color;
+      padding: 1rem;
+    }
+    .cont {
+      padding: 1rem;
+      border-bottom: solid 0.5px $secondary-color;
+    }
   }
 }

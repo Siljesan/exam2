@@ -24,11 +24,14 @@ function AdminEnquiries() {
   }
 
   return (
-    <section className="enquiries">
+    <section>
+      <div className="heading">
+        <Heading as={"h3"}>Enquiries</Heading>
+      </div>
       {enquiries.map((enq, idx) => {
         return (
-          <div className="enquiries__cont" key={idx}>
-            <Heading as={"h3"}>{enq.attributes.email}</Heading>
+          <div className="cont" key={idx}>
+            <Heading as={"h4"}>{enq.attributes.email}</Heading>
             <p>{enq.attributes.date}</p>
             <p>{enq.attributes.information}</p>
           </div>

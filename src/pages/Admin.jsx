@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AdminEnquiries from '../components/admin/AdminEnquiries'
 import AdminContact from '../components/admin/AdminContact'
 import { Heading } from '../components/styles/StyledHeadings'
 
 function Admin() {
+  const [error, setError] = useState();
+
+
   return (
     <div className='content'>
     <div>Admin</div>

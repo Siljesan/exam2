@@ -24,11 +24,14 @@ function AdminContact() {
   }
 
   return (
-    <section className="contact">
+    <section>
+      <div className="heading">
+        <Heading as={"h3"}>Contact messages</Heading>
+      </div>
       {contact.map((con, idx) => {
         return (
-          <div className="contact__cont" key={idx}>
-            <Heading as={"h3"}>{con.attributes.subject}</Heading>
+          <div className="cont" key={idx}>
+            <Heading as={"h4"}>{con.attributes.subject}</Heading>
             <p>{con.attributes.email}</p>
             <p>{con.attributes.message}</p>
           </div>
