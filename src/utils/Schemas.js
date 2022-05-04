@@ -31,3 +31,14 @@ export const LoginSchema = yup.object().shape({
     .email("Please enter a valid email address"),
   password: yup.string().required("Please enter password"),
 });
+
+export const EstablishmentSchema = yup.object().shape({
+  title: yup.string().required("Please enter title of establishment"),
+  punchline: yup
+    .string()
+    .required("Please enter a punchline for the establishment"),
+  description: yup
+    .string()
+    .required("Please enter a description")
+    .min(10, "The description must be at least 10 characters"),
+});

@@ -35,3 +35,10 @@
     color: red;
   }
 }
+
+.establishmentForm {
+  @extend .enquiryForm;
+  &__error {
+    color: red;
+  }
+}
