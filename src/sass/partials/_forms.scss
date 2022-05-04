@@ -8,12 +8,14 @@
     input,
     textarea {
       border: solid 1px $secondary-color;
+      border-radius: 5px;
     }
   }
   button {
     border: solid 1px $secondary-color;
     border-radius: 20px;
-    background-color: $complimentary-color;
+    background-color: $secondary-color;
+    color: white;
   }
   &__error {
     color: red;

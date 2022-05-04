@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { ESTABLISHMENT_URL } from "../utils/api";
 import { Heading } from "./styles/StyledHeadings";
 
@@ -26,11 +27,16 @@ function Inspo() {
         {hotel.map((hotel, idx) => {
           return hotel.attributes.featured ? (
             <div className="card" key={idx}>
-              <img className="card__img" src={hotel.attributes.coverimageurl} />
-              <div className="card__text">
-                <Heading as={"h3"}>{hotel.attributes.title}</Heading>
-                <p>{hotel.attributes.punchline}</p>
-              </div>
+              <Link to={`/${hotel.id}`}>
+                <img
+                  className="card__img"
+                  src={hotel.attributes.coverimageurl}
+                />
+                <div className="card__text">
+                  <Heading as={"h3"}>{hotel.attributes.title}</Heading>
+                  <p>{hotel.attributes.punchline}</p>
+                </div>
+              </Link>
             </div>
           ) : (
             ""

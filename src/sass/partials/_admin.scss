@@ -9,9 +9,9 @@
     background-color: white;
     box-shadow: 1px 1px 10px grey;
     .heading {
-      background-color: $complimentary-color;
+      background-color: $secondary-color;
+      color: white;
       text-align: center;
-      border-bottom: solid 1px $secondary-color;
       padding: 1rem;
     }
     .cont {

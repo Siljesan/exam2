@@ -6,6 +6,7 @@ function Hotels() {
   return (
     <div className='content'>
     <Heading>Where to?</Heading>
+    <input type={"search"} className="hotelSearch" />
     <HotelCards />
     </div>
   )
