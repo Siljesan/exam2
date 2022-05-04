@@ -7,7 +7,7 @@ function Hero() {
     <div className="hero">
       <div className="hero__img">
         <div className="hero__text">
-          <HeroHeading>Visit Bergen the right way</HeroHeading>
+          <HeroHeading>Discover Bergen</HeroHeading>
           <div className="hero__drop">
             <p>Where to?</p>
             <input type="search" id="hotelSearch" className="hero__search" />
