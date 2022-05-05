@@ -26,7 +26,7 @@ function Menu() {
             <li>
               <NavLink
                 to="/hotels"
-                className={(isActive) => (isActive ? "" : "")}
+                className={({ isActive }) => (isActive ? "active" : "")}
               >
                 All hotels
               </NavLink>
@@ -34,7 +34,7 @@ function Menu() {
             <li>
               <NavLink
                 to="/contact"
-                className={(isActive) => (isActive ? "" : "")}
+                className={({ isActive }) => (isActive ? "active" : "")}
               >
                 Contact us
               </NavLink>
