@@ -21,7 +21,7 @@ function Inspo() {
   }
 
   return (
-    <div className="content">
+    <div>
       <Heading as={"h2"}>Get inspired</Heading>
       <div className="cards">
         {hotel.map((hotel, idx) => {

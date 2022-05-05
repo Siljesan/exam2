@@ -5,6 +5,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  position: relative;
+  left: 0;
+  bottom: 0;
   &__logo {
     font-family: $heading-font;
     color: $secondary-color;

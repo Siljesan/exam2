@@ -5,7 +5,7 @@ import Menu from "./nav/Menu";
 
 function Footer() {
   return (
-    <div className="footer">
+    <footer className="footer">
       <Menu />
       <p className="footer__logo">Holidaze</p>
       <div className="footer__icons">
@@ -22,7 +22,7 @@ function Footer() {
           className="footer__icons--item"
         />
       </div>
-    </div>
+    </footer>
   );
 }
 

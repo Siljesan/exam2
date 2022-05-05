@@ -4,7 +4,7 @@ import { Heading } from '../components/styles/StyledHeadings'
 
 function Login() {
   return (
-    <div className="login">
+    <div className="login content">
         <div className='login__container'>
             <Heading>Admin login</Heading>
             <LoginForm />

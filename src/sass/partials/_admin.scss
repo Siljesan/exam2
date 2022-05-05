@@ -17,6 +17,9 @@
     .cont {
       padding: 1rem;
       border-bottom: solid 0.5px $secondary-color;
+      p {
+        margin: 0;
+      }
     }
   }
 }

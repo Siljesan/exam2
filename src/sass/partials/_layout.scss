@@ -15,6 +15,7 @@ h4 {
   margin: $margin;
   margin-top: 3rem;
   margin-bottom: 3rem;
+  min-height: calc(100vh - 416px);
 }
 .hotelSearch {
   border: solid 2px $secondary-color;

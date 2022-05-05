@@ -25,8 +25,6 @@ function LoginForm() {
       password: formData.password,
     });
 
-    console.log("Response Data: ", responseData);
-
     setAuth(responseData.data.jwt);
 
     navigate("/admin");
