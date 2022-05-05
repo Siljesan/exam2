@@ -39,15 +39,17 @@ function Result() {
   return (  
   <div className='content'>
     <Heading>{hotel.attributes.title}</Heading>
-    <img className='resultImg' src={hotel.attributes.coverimageurl} />
         <div className='result'>
+        <div className='result__cont'>
             <div className='result__text'>
                 <Heading as={"h2"}>{hotel.attributes.punchline}</Heading>
                 <p>{hotel.attributes.description}</p>
             </div>
             <div className='result__btn'>
-                <button onClick={() => setModal(true)}>Send Enquiry</button>
+                <button onClick={() => setModal(true)}>Send booking enquiry</button>
             </div>
+        </div>
+        <img className='resultImg' src={hotel.attributes.coverimageurl} />
         </div>
         <EnquiryModal show={modal} onHide={() => setModal(false)} />
   </div>
