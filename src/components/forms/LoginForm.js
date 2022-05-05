@@ -10,6 +10,7 @@ import AuthContext from "../../context/AuthContext";
 function LoginForm() {
   const navigate = useNavigate();
   const [auth, setAuth] = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
