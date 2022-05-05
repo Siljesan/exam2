@@ -5,11 +5,13 @@ import EnquiryForm from "./forms/EnquiryForm";
 import { ENQUIRY_URL, POPULATE } from "../utils/api";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useToggle } from "../hooks/useToggle";
 require("react-bootstrap/ModalHeader");
 
 function EnquiryModal(props) {
   const { location } = useParams();
-  console.log(location);
+  const [toggle, setToggle] = useToggle();
+
   const sendEnquiry = async (formData) => {
     const options = {
       data: {
@@ -21,6 +23,7 @@ function EnquiryModal(props) {
     };
     const responseData = await axios.post(ENQUIRY_URL + POPULATE, options);
     console.log(responseData);
+    setToggle();
   };
 
   return (
@@ -31,7 +34,13 @@ function EnquiryModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <EnquiryForm sendEnquiry={sendEnquiry} />
+        {toggle ? (
+          <div>
+            Thank you! We will confirm your booking as soon as possible.
+          </div>
+        ) : (
+          <EnquiryForm sendEnquiry={sendEnquiry} />
+        )}
       </Modal.Body>
     </Modal>
   );
