@@ -6,3 +6,4 @@ export const AUTH_URL = `${BASE_URL}api/auth/local/`;
 export const ENQUIRY_PATH = "api/enquiries/";
 export const CONTACT_PATH = "api/contacts/";
 export const ESTABLISHMENT_PATH = "api/establishments/";
+export const POPULATE = "?populate=*";

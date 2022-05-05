@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext";
 import useAxios from "../../hooks/useAxios";
-import { ENQUIRY_PATH } from "../../utils/api";
+import { ENQUIRY_PATH, POPULATE } from "../../utils/api";
 import { Heading } from "../styles/StyledHeadings";
 
 function AdminEnquiries() {
@@ -12,7 +12,7 @@ function AdminEnquiries() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await http.get(ENQUIRY_PATH);
+      const response = await http.get(ENQUIRY_PATH + POPULATE);
       console.log(response.data.data);
       setEnquiries(response.data.data);
     };
@@ -32,6 +32,7 @@ function AdminEnquiries() {
         return (
           <div className="cont" key={idx}>
             <Heading as={"h4"}>{enq.attributes.email}</Heading>
+            <p>{enq.attributes.establishment.data.attributes.title}</p>
             <p>{enq.attributes.date}</p>
             <p>{enq.attributes.information}</p>
           </div>
