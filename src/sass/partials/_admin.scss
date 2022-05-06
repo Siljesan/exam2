@@ -29,6 +29,8 @@
       &__icon--item {
         padding: 1rem;
         color: black;
+        border: none;
+        background-color: transparent;
         &:hover {
           color: $secondary-color;
         }

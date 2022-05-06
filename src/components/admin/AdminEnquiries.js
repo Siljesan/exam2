@@ -4,13 +4,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import useAxios from "../../hooks/useAxios";
+import { useToggle } from "../../hooks/useToggle";
 import { ENQUIRY_PATH, POPULATE } from "../../utils/api";
-import Mailto from "../Mailto";
 import { Heading } from "../styles/StyledHeadings";
 
 function AdminEnquiries() {
   const [enquiries, setEnquiries] = useState([]);
   const [auth, setAuth] = useContext(AuthContext);
+  const [toggle, setToggle] = useToggle();
 
   const http = useAxios();
 
@@ -21,7 +22,7 @@ function AdminEnquiries() {
       setEnquiries(response.data.data);
     };
     fetchData().catch(console.error);
-  }, [auth]);
+  }, [toggle, auth]);
 
   if (enquiries.length === 0) {
     return <div>Loading...</div>;
@@ -33,6 +34,11 @@ function AdminEnquiries() {
         <Heading as={"h3"}>Enquiries</Heading>
       </div>
       {enquiries.map((enq, idx) => {
+        const deleteBtn = async () => {
+          const responseData = await http.delete(ENQUIRY_PATH + enq.id);
+          console.log(responseData);
+          setToggle();
+        };
         return (
           <div key={idx} className="cont">
             <div>
@@ -52,10 +58,9 @@ function AdminEnquiries() {
               >
                 <FontAwesomeIcon icon={solid("reply")} />
               </Link>
-              <FontAwesomeIcon
-                icon={solid("trash")}
-                className="cont__icon--item"
-              />
+              <button className="cont__icon--item" onClick={deleteBtn}>
+                <FontAwesomeIcon icon={solid("trash")} />
+              </button>
             </div>
           </div>
         );
