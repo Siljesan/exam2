@@ -39,6 +39,14 @@ function AdminEstablishments() {
     <>
       <section>
         <div className="heading">
+          <Heading as={"h3"}>Add establishment</Heading>
+        </div>
+        <div className="cont">
+          <EstablishmentForm addEstablishment={addEstablishment} />
+        </div>
+      </section>
+      <section>
+        <div className="heading">
           <Heading as={"h3"}>Establishments</Heading>
         </div>
         {establishments.map((est, idx) => {
@@ -48,14 +56,6 @@ function AdminEstablishments() {
             </div>
           );
         })}
-      </section>
-      <section>
-        <div className="heading">
-          <Heading as={"h3"}>Add establishment</Heading>
-        </div>
-        <div className="cont">
-          <EstablishmentForm addEstablishment={addEstablishment} />
-        </div>
       </section>
     </>
   );

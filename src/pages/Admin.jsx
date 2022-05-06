@@ -16,10 +16,6 @@ function Admin() {
       <AdminEnquiries />
       <AdminContact />
     </section>
-    <Heading as={"h2"}>Establishment editor</Heading>
-    <section className='adminCont'>
-      <AdminEstablishments />
-    </section>
     </div>
   )
 }

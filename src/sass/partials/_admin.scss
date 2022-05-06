@@ -17,8 +17,21 @@
     .cont {
       padding: 1rem;
       border-bottom: solid 0.5px $secondary-color;
+      display: flex;
+      justify-content: space-between;
       p {
         margin: 0;
+      }
+      &__icon {
+        display: flex;
+        flex-direction: column;
+      }
+      &__icon--item {
+        padding: 1rem;
+        color: black;
+        &:hover {
+          color: $secondary-color;
+        }
       }
     }
   }

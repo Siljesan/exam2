@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import Nav from "./components/nav/Nav";
 import { AuthProvider } from "./context/AuthContext";
 import Admin from "./pages/Admin";
+import AdminEstablishment from "./pages/AdminEstablishment";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Hotels from "./pages/Hotels";
@@ -23,6 +24,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/establishment" element={<AdminEstablishment />} />
           </Routes>
           <Footer />
         </Router>

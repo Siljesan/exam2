@@ -16,11 +16,29 @@ function Menu() {
     <>
       <ul className="nav__list">
         {auth ? (
-          <li>
-            <button onClick={logout} className="nav__list--login">
-              Log out
-            </button>
-          </li>
+          <>
+            <li>
+              <NavLink
+                to="/admin"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Inbox
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/establishment"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Establishment
+              </NavLink>
+            </li>
+            <li>
+              <button onClick={logout} className="nav__list--login">
+                Log out
+              </button>
+            </li>
+          </>
         ) : (
           <>
             <li>

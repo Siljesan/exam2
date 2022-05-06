@@ -1,7 +1,11 @@
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import useAxios from "../../hooks/useAxios";
 import { ENQUIRY_PATH, POPULATE } from "../../utils/api";
+import Mailto from "../Mailto";
 import { Heading } from "../styles/StyledHeadings";
 
 function AdminEnquiries() {
@@ -30,11 +34,29 @@ function AdminEnquiries() {
       </div>
       {enquiries.map((enq, idx) => {
         return (
-          <div className="cont" key={idx}>
-            <Heading as={"h4"}>{enq.attributes.email}</Heading>
-            <p>{enq.attributes.establishment.data.attributes.title}</p>
-            <p>{enq.attributes.date}</p>
-            <p>{enq.attributes.information}</p>
+          <div key={idx} className="cont">
+            <div>
+              <Heading as={"h4"}>{enq.attributes.email}</Heading>
+              <p>{enq.attributes.establishment.data.attributes.title}</p>
+              <p>{enq.attributes.date}</p>
+              <p>{enq.attributes.information}</p>
+            </div>
+            <div className="cont__icon">
+              <Link
+                className="cont__icon--item"
+                to="#"
+                onClick={(e) => {
+                  window.location.href = `mailto:${enq.attributes.email}`;
+                  e.preventDefault();
+                }}
+              >
+                <FontAwesomeIcon icon={solid("reply")} />
+              </Link>
+              <FontAwesomeIcon
+                icon={solid("trash")}
+                className="cont__icon--item"
+              />
+            </div>
           </div>
         );
       })}
