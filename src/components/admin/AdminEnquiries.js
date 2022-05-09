@@ -1,6 +1,7 @@
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
+import { confirmAlert } from "react-confirm-alert";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import useAxios from "../../hooks/useAxios";
@@ -35,9 +36,14 @@ function AdminEnquiries() {
       </div>
       {enquiries.map((enq, idx) => {
         const deleteBtn = async () => {
-          const responseData = await http.delete(ENQUIRY_PATH + enq.id);
-          console.log(responseData);
-          setToggle();
+          const confirmDelete = window.confirm(
+            "Are you sure you want to delete this enquiry?"
+          );
+          if (confirmDelete) {
+            const responseData = await http.delete(ENQUIRY_PATH + enq.id);
+            console.log(responseData);
+            setToggle();
+          }
         };
         return (
           <div key={idx} className="cont">
