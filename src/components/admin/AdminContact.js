@@ -35,9 +35,14 @@ function AdminContact() {
       </div>
       {contact.map((con, idx) => {
         const deleteBtn = async () => {
-          const responseData = await http.delete(CONTACT_PATH + con.id);
-          console.log(responseData);
-          setToggle();
+          const confirmDelete = window.confirm(
+            "Are you sure you want to delete this enquiry?"
+          );
+          if (confirmDelete) {
+            const responseData = await http.delete(CONTACT_PATH + con.id);
+            console.log(responseData);
+            setToggle();
+          }
         };
         return (
           <div className="cont" key={idx}>
