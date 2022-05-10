@@ -9,8 +9,9 @@ function MediaUpload() {
   const http = useAxios();
 
   const handleChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+    setSelectedFile(event.target.files);
     setIsSelected(true);
+    console.log(selectedFile);
   };
 
   const handleUpload = async (e) => {
@@ -20,7 +21,15 @@ function MediaUpload() {
 
     console.log(formData);
 
-    const responseData = await http.post(UPLOAD_PATH, formData);
+    const responseData = await http
+      .post(UPLOAD_PATH, formData)
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     console.log(responseData);
   };
 
