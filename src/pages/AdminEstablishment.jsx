@@ -1,6 +1,5 @@
 import React from 'react'
 import AdminEstablishments from '../components/admin/AdminEstablishments'
-import MediaUpload from '../components/admin/MediaUpload'
 import { Heading } from '../components/styles/StyledHeadings'
 
 function AdminEstablishment() {
@@ -10,8 +9,6 @@ function AdminEstablishment() {
         <section>
             <AdminEstablishments />
         </section>
-        
-        <MediaUpload />
     </div>
   )
 }

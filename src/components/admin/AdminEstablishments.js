@@ -8,6 +8,7 @@ import { useToggle } from "../../hooks/useToggle";
 import { ESTABLISHMENT_PATH } from "../../utils/api";
 import EstablishmentForm from "../forms/EstablishmentForm";
 import { Heading } from "../styles/StyledHeadings";
+import MediaUpload from "./MediaUpload";
 
 function AdminEstablishments() {
   const [establishments, setEstablishments] = useState([]);
@@ -31,10 +32,16 @@ function AdminEstablishments() {
         title: formData.title,
         punchline: formData.punchline,
         description: formData.description,
+        coverimageurl: formData.coverimageurl,
       },
     };
     const responseData = await http.post(ESTABLISHMENT_PATH, options);
     console.log(responseData);
+    setToggle();
+  };
+
+  const addAnother = (e) => {
+    e.preventDefault();
     setToggle();
   };
 
@@ -92,8 +99,16 @@ function AdminEstablishments() {
       </section>
       <section>
         <Heading as={"h2"}>Add establishment</Heading>
-        <div>
-          <EstablishmentForm addEstablishment={addEstablishment} />
+        <div className="flex">
+          {toggle ? (
+            <div>
+              <p>Establishment is added</p>
+              <button onClick={addAnother}>Add another</button>
+            </div>
+          ) : (
+            <EstablishmentForm addEstablishment={addEstablishment} />
+          )}
+          <MediaUpload />
         </div>
       </section>
     </>

@@ -48,6 +48,16 @@ function EstablishmentForm({ addEstablishment }) {
           )}
         </label>
 
+        <label>
+          Image url:
+          <input {...register("coverimageurl")} />
+          {errors.coverimageurl && (
+            <span className="establishmentForm__error">
+              {errors.coverimageurl.message}
+            </span>
+          )}
+        </label>
+
         <button>Add establishment</button>
       </form>
     </>

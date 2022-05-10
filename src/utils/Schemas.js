@@ -41,4 +41,5 @@ export const EstablishmentSchema = yup.object().shape({
     .string()
     .required("Please enter a description")
     .min(10, "The description must be at least 10 characters"),
+  coverimageurl: yup.string().required("Please enter image url"),
 });

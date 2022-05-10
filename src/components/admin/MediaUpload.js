@@ -25,7 +25,7 @@ function MediaUpload() {
   };
 
   return (
-    <form>
+    <form className="mediaForm">
       <input type="file" name="file" onChange={handleChange} />
       {isSelected ? (
         <div>

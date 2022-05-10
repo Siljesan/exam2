@@ -40,7 +40,12 @@
 
 .establishmentForm {
   @extend .enquiryForm;
+  width: 45%;
   &__error {
     color: red;
   }
+}
+
+.mediaForm {
+  width: 45%;
 }

@@ -57,3 +57,14 @@
     }
   }
 }
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  button {
+    border: solid 1px $secondary-color;
+    border-radius: 20px;
+    background-color: $secondary-color;
+    color: white;
+  }
+}
