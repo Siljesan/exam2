@@ -1,6 +1,10 @@
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
+import { Table } from "react-bootstrap";
 import AuthContext from "../../context/AuthContext";
 import useAxios from "../../hooks/useAxios";
+import { useToggle } from "../../hooks/useToggle";
 import { ESTABLISHMENT_PATH } from "../../utils/api";
 import EstablishmentForm from "../forms/EstablishmentForm";
 import { Heading } from "../styles/StyledHeadings";
@@ -8,6 +12,7 @@ import { Heading } from "../styles/StyledHeadings";
 function AdminEstablishments() {
   const [establishments, setEstablishments] = useState([]);
   const [auth, setAuth] = useContext(AuthContext);
+  const [toggle, setToggle] = useToggle();
 
   const http = useAxios();
 
@@ -18,7 +23,7 @@ function AdminEstablishments() {
       setEstablishments(response.data.data);
     };
     fetchData().catch(console.error);
-  }, [auth]);
+  }, [toggle, auth]);
 
   const addEstablishment = async (formData) => {
     const options = {
@@ -30,6 +35,7 @@ function AdminEstablishments() {
     };
     const responseData = await http.post(ESTABLISHMENT_PATH, options);
     console.log(responseData);
+    setToggle();
   };
 
   if (establishments.length === 0) {
@@ -38,24 +44,57 @@ function AdminEstablishments() {
   return (
     <>
       <section>
-        <div className="heading">
-          <Heading as={"h3"}>Add establishment</Heading>
-        </div>
-        <div className="cont">
-          <EstablishmentForm addEstablishment={addEstablishment} />
-        </div>
+        <Heading as={"h2"}>Establishments</Heading>
+        <Table bordered className="table">
+          <thead className="table__h">
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Punchline</th>
+              <th>Description</th>
+              <th>Image</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody className="">
+            {establishments.map((est, idx) => {
+              const deleteBtn = async () => {
+                const confirmDelete = window.confirm(
+                  "Are you sure you want to delete this establishment?"
+                );
+                if (confirmDelete) {
+                  const responseData = await http.delete(
+                    ESTABLISHMENT_PATH + est.id
+                  );
+                  console.log(responseData);
+                  setToggle();
+                }
+              };
+              return (
+                <tr key={idx}>
+                  <td>{est.id}</td>
+                  <td>{est.attributes.title}</td>
+                  <td>{est.attributes.punchline}</td>
+                  <td>{est.attributes.description}</td>
+                  <td>
+                    <img src={est.attributes.coverimageurl} />
+                  </td>
+                  <td>
+                    <button onClick={deleteBtn}>
+                      <FontAwesomeIcon icon={solid("trash")} />
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </Table>
       </section>
       <section>
-        <div className="heading">
-          <Heading as={"h3"}>Establishments</Heading>
+        <Heading as={"h2"}>Add establishment</Heading>
+        <div>
+          <EstablishmentForm addEstablishment={addEstablishment} />
         </div>
-        {establishments.map((est, idx) => {
-          return (
-            <div className="cont" key={idx}>
-              <Heading as={"h4"}>{est.attributes.title}</Heading>
-            </div>
-          );
-        })}
       </section>
     </>
   );

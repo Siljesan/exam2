@@ -38,3 +38,22 @@
     }
   }
 }
+
+.table {
+  background-color: white;
+  &__h {
+    background-color: $secondary-color;
+    color: white;
+  }
+  img {
+    width: 150px;
+  }
+  button {
+    color: black;
+    border: none;
+    background-color: transparent;
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+}
