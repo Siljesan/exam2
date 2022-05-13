@@ -25,4 +25,11 @@
       color: white;
     }
   }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    .card {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
 }

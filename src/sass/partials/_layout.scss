@@ -16,6 +16,17 @@ h4 {
   margin-top: 3rem;
   margin-bottom: 3rem;
   min-height: calc(100vh - 416px);
+  max-width: 1200px;
+  @media (max-width: 1200px) {
+    margin: $margin-tablet;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 768px) {
+    margin: $margin-mobile;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 }
 .hotelSearch {
   border: solid 2px $secondary-color;
