@@ -29,6 +29,10 @@
   }
   width: 50%;
   margin: 3rem 0rem 3rem 0rem;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 2rem 0rem 1rem 0rem;
+  }
 }
 
 .loginForm {
@@ -43,6 +47,10 @@
   width: 45%;
   &__error {
     color: red;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 1rem;
   }
 }
 
