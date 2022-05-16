@@ -8,21 +8,26 @@ function Hero() {
   const [hotel, setHotel] = useState([]);
   const [hotelTitle, setHotelTitle] = useState([]);
   const [searchItem, setSearchItem] = useState([]);
+  const [searching, setSearching] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(ESTABLISHMENT_URL);
+      const data = response.data.data.map((item) => {
+        return item.attributes.title;
+      });
       setHotel(response.data.data);
+      setHotelTitle(data);
     };
     fetchData().catch(console.error);
   }, []);
 
   const onChange = (event) => {
-    console.log(hotel);
-    hotel.map((x) => {
-      setHotelTitle(x.attributes.title);
-    });
-    console.log(hotelTitle);
+    if (event.target.value.length > 1) {
+      setSearching(true);
+    } else {
+      setSearching(false);
+    }
     const filteredList = hotelTitle.filter((item) =>
       item.match(event.target.value)
     );
@@ -36,7 +41,11 @@ function Hero() {
           <HeroHeading>Discover Bergen</HeroHeading>
           <div className="hero__drop">
             <p>Where to?</p>
-            <SearchDropdown items={searchItem} onChange={onChange} />
+            <SearchDropdown
+              items={searchItem}
+              onChange={onChange}
+              searching={searching}
+            />
           </div>
         </div>
       </div>

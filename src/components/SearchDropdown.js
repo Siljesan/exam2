@@ -1,7 +1,7 @@
 import React from "react";
 import { ListGroup } from "react-bootstrap";
 
-function SearchDropdown({ items, onChange }) {
+function SearchDropdown({ items, onChange, searching }) {
   return (
     <>
       <input
@@ -10,15 +10,17 @@ function SearchDropdown({ items, onChange }) {
         className="hero__search"
         onChange={onChange}
       />
-      <ListGroup>
-        {items.map((item, idx) => {
-          return (
-            <ListGroup.Item action href="#link1" key={idx}>
-              {item}
-            </ListGroup.Item>
-          );
-        })}
-      </ListGroup>
+      {searching && (
+        <ListGroup>
+          {items.map((item, idx) => {
+            return (
+              <ListGroup.Item action href="#link1" key={idx}>
+                {item}
+              </ListGroup.Item>
+            );
+          })}
+        </ListGroup>
+      )}
     </>
   );
 }
