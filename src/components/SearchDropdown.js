@@ -15,9 +15,11 @@ function SearchDropdown({ items, onChange, searching }) {
         <ListGroup>
           {items.map((item, idx) => {
             return (
-              <ListGroup.Item className="searchDropdown" action key={idx}>
-                <Link to={`/${item.id}`}>{item}</Link>
-              </ListGroup.Item>
+              <Link to={`/${item.id}`}>
+                <ListGroup.Item className="searchDropdown" action key={idx}>
+                  {item}
+                </ListGroup.Item>
+              </Link>
             );
           })}
         </ListGroup>

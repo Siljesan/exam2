@@ -28,9 +28,13 @@ function Hero() {
     } else {
       setSearching(false);
     }
-    const filteredList = hotelTitle.filter((item) =>
+    const titleData = hotel.map((x) => {
+      return x.attributes.title;
+    });
+    const filteredList = titleData.filter((item) =>
       item.match(event.target.value)
     );
+    console.log(filteredList);
     setSearchItem(filteredList);
   };
 
