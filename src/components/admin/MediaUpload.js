@@ -9,23 +9,19 @@ function MediaUpload() {
   const http = useAxios();
 
   const handleChange = (event) => {
-    setSelectedFile(event.target.files);
+    console.log(event.target.files[0]);
+    setSelectedFile(event.target.files[0]);
     setIsSelected(true);
-    console.log(selectedFile);
   };
 
   const handleUpload = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("file", selectedFile);
-
-    console.log(formData);
+    let formData = new FormData();
+    formData.append("file", selectedFile, selectedFile.name);
 
     const responseData = await http
-      .post(UPLOAD_PATH, formData)
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
+      .post(UPLOAD_PATH, {
+        body: new FormData(e.target),
       })
       .catch((error) => {
         console.error(error);
@@ -34,7 +30,7 @@ function MediaUpload() {
   };
 
   return (
-    <form className="mediaForm">
+    <form className="mediaForm" onSubmit={handleUpload}>
       <input type="file" name="file" onChange={handleChange} />
       {isSelected ? (
         <div>
@@ -44,7 +40,7 @@ function MediaUpload() {
       ) : (
         <div>Select a file to show details</div>
       )}
-      <button onClick={handleUpload}>Upload image</button>
+      <button type="submit">Upload image</button>
     </form>
   );
 }
