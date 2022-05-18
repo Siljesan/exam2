@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginSchema } from "../../utils/Schemas";
@@ -6,10 +6,12 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AUTH_URL } from "../../utils/api";
 import AuthContext from "../../context/AuthContext";
+import { Heading } from "../styles/StyledHeadings";
 
 function LoginForm() {
   const navigate = useNavigate();
   const [auth, setAuth] = useContext(AuthContext);
+  const [error, setError] = useState();
 
   const {
     register,
@@ -33,29 +35,40 @@ function LoginForm() {
   const onSubmit = (formData) => {
     console.log("Form Data: ", formData);
 
-    login(formData).catch(console.error);
+    login(formData).catch((error) => setError(error));
   };
+
   return (
     <>
-      <form className="loginForm" onSubmit={handleSubmit(onSubmit)}>
-        <label>
-          Enter your email
-          <input {...register("email")} />
-          {errors.email && (
-            <span className="loginForm__error">{errors.email.message}</span>
-          )}
-        </label>
+      {error ? (
+        <div>
+          <Heading as={"h2"}>Error</Heading>
+          <p>The server responded with: {error.status}</p>
+          <p>{error.message}</p>
+        </div>
+      ) : (
+        <form className="loginForm" onSubmit={handleSubmit(onSubmit)}>
+          <label>
+            Enter your email
+            <input {...register("email")} />
+            {errors.email && (
+              <span className="loginForm__error">{errors.email.message}</span>
+            )}
+          </label>
 
-        <label>
-          Enter your password
-          <input {...register("password")} type="password" />
-          {errors.password && (
-            <span className="loginForm__error">{errors.password.message}</span>
-          )}
-        </label>
+          <label>
+            Enter your password
+            <input {...register("password")} type="password" />
+            {errors.password && (
+              <span className="loginForm__error">
+                {errors.password.message}
+              </span>
+            )}
+          </label>
 
-        <button>Send</button>
-      </form>
+          <button>Send</button>
+        </form>
+      )}
     </>
   );
 }

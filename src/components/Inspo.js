@@ -6,6 +6,7 @@ import { Heading } from "./styles/StyledHeadings";
 
 function Inspo() {
   const [hotel, setHotel] = useState([]);
+  const [error, setError] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,8 +14,18 @@ function Inspo() {
       console.log(response);
       setHotel(response.data.data);
     };
-    fetchData().catch(console.error);
+    fetchData().catch((error) => setError(error));
   }, []);
+
+  if (error) {
+    return (
+      <div>
+        <Heading as={"h2"}>Error fetching data</Heading>
+        <p>The server responded with:</p>
+        <p>{error.message}</p>
+      </div>
+    );
+  }
 
   if (hotel.length < 0) {
     return <div>Loading...</div>;

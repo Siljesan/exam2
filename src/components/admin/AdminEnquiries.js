@@ -13,6 +13,7 @@ function AdminEnquiries() {
   const [enquiries, setEnquiries] = useState([]);
   const [auth, setAuth] = useContext(AuthContext);
   const [toggle, setToggle] = useToggle();
+  const [error, setError] = useState();
 
   const http = useAxios();
 
@@ -22,8 +23,18 @@ function AdminEnquiries() {
       console.log(response.data.data);
       setEnquiries(response.data.data);
     };
-    fetchData().catch(console.error);
+    fetchData().catch((error) => setError(error));
   }, [toggle, auth]);
+
+  if (error) {
+    return (
+      <div>
+        <Heading as={"h2"}>Error fetching data</Heading>
+        <p>The server responded with:</p>
+        <p>{error.message}</p>
+      </div>
+    );
+  }
 
   if (enquiries.length === 0) {
     return <div>Loading...</div>;

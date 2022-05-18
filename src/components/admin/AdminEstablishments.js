@@ -14,6 +14,7 @@ function AdminEstablishments() {
   const [establishments, setEstablishments] = useState([]);
   const [auth, setAuth] = useContext(AuthContext);
   const [toggle, setToggle] = useToggle();
+  const [error, setError] = useState();
 
   const http = useAxios();
 
@@ -23,7 +24,7 @@ function AdminEstablishments() {
       console.log(response.data.data);
       setEstablishments(response.data.data);
     };
-    fetchData().catch(console.error);
+    fetchData().catch((error) => setError(error));
   }, [toggle, auth]);
 
   const addEstablishment = async (formData) => {
@@ -44,6 +45,16 @@ function AdminEstablishments() {
     e.preventDefault();
     setToggle();
   };
+
+  if (error) {
+    return (
+      <div>
+        <Heading as={"h2"}>Error fetching data</Heading>
+        <p>The server responded with:</p>
+        <p>{error.message}</p>
+      </div>
+    );
+  }
 
   if (establishments.length === 0) {
     return <div>Loading...</div>;
