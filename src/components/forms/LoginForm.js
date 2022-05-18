@@ -42,8 +42,7 @@ function LoginForm() {
     <>
       {error ? (
         <div>
-          <Heading as={"h2"}>Error</Heading>
-          <p>The server responded with: {error.status}</p>
+          <Heading as={"h2"}>Something went wrong</Heading>
           <p>{error.message}</p>
         </div>
       ) : (

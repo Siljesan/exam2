@@ -49,8 +49,7 @@ function AdminEstablishments() {
   if (error) {
     return (
       <div>
-        <Heading as={"h2"}>Error fetching data</Heading>
-        <p>The server responded with:</p>
+        <Heading as={"h2"}>Something went wrong</Heading>
         <p>{error.message}</p>
       </div>
     );
