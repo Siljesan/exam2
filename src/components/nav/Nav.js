@@ -5,9 +5,6 @@ import Menu from "./Menu";
 function Nav() {
   return (
     <div className="nav">
-      <Link className="nav__logo" to="/">
-        Holidaze
-      </Link>
       <Menu />
     </div>
   );
