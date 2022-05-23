@@ -6,18 +6,14 @@ import { HeroHeading } from "./styles/StyledHeadings";
 
 function Hero() {
   const [hotel, setHotel] = useState([]);
-  const [hotelTitle, setHotelTitle] = useState([]);
-  const [searchItem, setSearchItem] = useState([]);
+  const [searchItems, setSearchItems] = useState([]);
   const [searching, setSearching] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(ESTABLISHMENT_URL);
-      const data = response.data.data.map((item) => {
-        return item.attributes.title;
-      });
       setHotel(response.data.data);
-      setHotelTitle(data);
     };
     fetchData().catch(console.error);
   }, []);
@@ -25,17 +21,17 @@ function Hero() {
   const onChange = (event) => {
     if (event.target.value.length > 1) {
       setSearching(true);
+      setInputValue(event.target.value);
     } else {
       setSearching(false);
     }
-    const titleData = hotel.map((x) => {
-      return x.attributes.title;
+    const filteredData = hotel.filter((item) => {
+      return Object.values(item.attributes.title)
+        .join("")
+        .toLowerCase()
+        .includes(inputValue.toLowerCase());
     });
-    const filteredList = titleData.filter((item) =>
-      item.match(event.target.value)
-    );
-    console.log(filteredList);
-    setSearchItem(filteredList);
+    setSearchItems(filteredData);
   };
 
   return (
@@ -46,7 +42,7 @@ function Hero() {
           <div className="hero__drop">
             <p>Where to?</p>
             <SearchDropdown
-              items={searchItem}
+              items={searchItems}
               onChange={onChange}
               searching={searching}
             />

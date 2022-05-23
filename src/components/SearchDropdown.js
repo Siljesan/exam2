@@ -12,13 +12,11 @@ function SearchDropdown({ items, onChange, searching }) {
         onChange={onChange}
       />
       {searching && (
-        <ListGroup>
+        <ListGroup className="searchDropdown">
           {items.map((item, idx) => {
             return (
-              <Link to={`/${item.id}`}>
-                <ListGroup.Item className="searchDropdown" action key={idx}>
-                  {item}
-                </ListGroup.Item>
+              <Link to={`/${item.id}`} key={idx}>
+                <ListGroup.Item action>{item.attributes.title}</ListGroup.Item>
               </Link>
             );
           })}
