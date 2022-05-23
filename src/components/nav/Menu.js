@@ -16,7 +16,6 @@ function Menu() {
     <>
       {auth ? (
         <>
-          <div className="nav__logo">Holidaze</div>
           <ul className="nav__list">
             <li>
               <NavLink
@@ -43,9 +42,6 @@ function Menu() {
         </>
       ) : (
         <>
-          <Link className="nav__logo" to="/">
-            Holidaze
-          </Link>
           <ul className="nav__list">
             <li>
               <NavLink
