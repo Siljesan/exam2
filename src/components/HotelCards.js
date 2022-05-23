@@ -7,11 +7,13 @@ import { Heading } from "./styles/StyledHeadings";
 function HotelCards() {
   const [hotel, setHotel] = useState([]);
   const [error, setError] = useState();
+  const [searchInput, setSearchInput] = useState("");
+  const [filteredResult, setFilteredResult] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(ESTABLISHMENT_URL);
-      console.log(response);
+      console.log(response.data.data);
       setHotel(response.data.data);
     };
     fetchData().catch((error) => setError(error));
@@ -30,21 +32,64 @@ function HotelCards() {
     return <div>Loading...</div>;
   }
 
+  const filterItems = (searchValue) => {
+    setSearchInput(searchValue);
+    if (searchInput !== "") {
+      const filteredData = hotel.filter((item) => {
+        return Object.values(item.attributes.title)
+          .join("")
+          .toLowerCase()
+          .includes(searchInput.toLowerCase());
+      });
+      setFilteredResult(filteredData);
+    } else {
+      setFilteredResult(hotel);
+    }
+  };
+
   return (
-    <div className="cards">
-      {hotel.map((hotel, idx) => {
-        return (
-          <div className="card" key={idx}>
-            <Link to={`/${hotel.id}`}>
-              <img className="card__img" src={hotel.attributes.coverimageurl} />
-              <div className="card__text">
-                <Heading as={"h3"}>{hotel.attributes.title}</Heading>
-              </div>
-            </Link>
-          </div>
-        );
-      })}
-    </div>
+    <>
+      <Heading>Where to?</Heading>
+      <input
+        type={"text"}
+        placeholder="Search..."
+        className="hotelSearch"
+        onChange={(e) => filterItems(e.target.value)}
+      />
+      <div className="cards">
+        {searchInput.length > 1
+          ? filteredResult.map((hotel, idx) => {
+              return (
+                <div className="card" key={idx}>
+                  <Link to={`/${hotel.id}`}>
+                    <img
+                      className="card__img"
+                      src={hotel.attributes.coverimageurl}
+                    />
+                    <div className="card__text">
+                      <Heading as={"h3"}>{hotel.attributes.title}</Heading>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })
+          : hotel.map((hotel, idx) => {
+              return (
+                <div className="card" key={idx}>
+                  <Link to={`/${hotel.id}`}>
+                    <img
+                      className="card__img"
+                      src={hotel.attributes.coverimageurl}
+                    />
+                    <div className="card__text">
+                      <Heading as={"h3"}>{hotel.attributes.title}</Heading>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })}
+      </div>
+    </>
   );
 }
 
