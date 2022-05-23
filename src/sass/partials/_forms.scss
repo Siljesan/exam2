@@ -16,6 +16,10 @@
     border-radius: 20px;
     background-color: $secondary-color;
     color: white;
+    &:hover {
+      background-color: white;
+      color: $secondary-color;
+    }
   }
   &__error {
     color: red;
@@ -26,6 +30,12 @@
   @extend .enquiryForm;
   &__error {
     color: red;
+  }
+  button {
+    &:hover {
+      background-color: white;
+      color: $secondary-color;
+    }
   }
   width: 50%;
   margin: 3rem 0rem 3rem 0rem;
