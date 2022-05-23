@@ -7,6 +7,7 @@ import useAxios from "../../hooks/useAxios";
 import { useToggle } from "../../hooks/useToggle";
 import { CONTACT_PATH } from "../../utils/api";
 import { Heading } from "../styles/StyledHeadings";
+import loading from "../../Spin-1s-200px.gif";
 
 function AdminContact() {
   const [contact, setContact] = useState([]);
@@ -35,7 +36,11 @@ function AdminContact() {
   }
 
   if (contact.length === 0) {
-    return <div>Loading...</div>;
+    return (
+      <div className="loading">
+        <img src={loading} />
+      </div>
+    );
   }
 
   return (

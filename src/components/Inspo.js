@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ESTABLISHMENT_URL } from "../utils/api";
 import { Heading } from "./styles/StyledHeadings";
+import loading from "../Spin-1s-200px.gif";
 
 function Inspo() {
   const [hotel, setHotel] = useState([]);
@@ -26,8 +27,12 @@ function Inspo() {
     );
   }
 
-  if (hotel.length < 0) {
-    return <div>Loading...</div>;
+  if (hotel.length === 0) {
+    return (
+      <div className="loading">
+        <img src={loading} />
+      </div>
+    );
   }
 
   return (

@@ -9,6 +9,7 @@ import { ESTABLISHMENT_PATH } from "../../utils/api";
 import EstablishmentForm from "../forms/EstablishmentForm";
 import { Heading } from "../styles/StyledHeadings";
 import MediaUpload from "./MediaUpload";
+import loading from "../../Spin-1s-200px.gif";
 
 function AdminEstablishments() {
   const [establishments, setEstablishments] = useState([]);
@@ -56,8 +57,13 @@ function AdminEstablishments() {
   }
 
   if (establishments.length === 0) {
-    return <div>Loading...</div>;
+    return (
+      <div className="loading">
+        <img src={loading} />
+      </div>
+    );
   }
+
   return (
     <>
       <section>

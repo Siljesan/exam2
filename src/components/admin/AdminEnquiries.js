@@ -8,6 +8,7 @@ import useAxios from "../../hooks/useAxios";
 import { useToggle } from "../../hooks/useToggle";
 import { ENQUIRY_PATH, POPULATE } from "../../utils/api";
 import { Heading } from "../styles/StyledHeadings";
+import loading from "../../Spin-1s-200px.gif";
 
 function AdminEnquiries() {
   const [enquiries, setEnquiries] = useState([]);
@@ -36,7 +37,11 @@ function AdminEnquiries() {
   }
 
   if (enquiries.length === 0) {
-    return <div>Loading...</div>;
+    return (
+      <div className="loading">
+        <img src={loading} />
+      </div>
+    );
   }
 
   return (
