@@ -27,7 +27,7 @@ function EnquiryForm({ sendEnquiry }) {
       ) : (
         <form className="enquiryForm" onSubmit={handleSubmit(onSubmit)}>
           <label>
-            Enter your email:
+            Enter your email
             <input {...register("email")} placeholder="email..." id="email" />
             {errors.email && (
               <span className="enquiryForm__error">{errors.email.message}</span>
@@ -35,7 +35,7 @@ function EnquiryForm({ sendEnquiry }) {
           </label>
 
           <label>
-            Enter date of visit:
+            Enter date of visit from - until
             <input {...register("date")} placeholder="date..." id="date" />
             {errors.date && (
               <span className="enquiryForm__error">{errors.date.message}</span>
@@ -43,7 +43,7 @@ function EnquiryForm({ sendEnquiry }) {
           </label>
 
           <label>
-            Enter additional information:
+            Enter additional information
             <textarea
               {...register("information")}
               placeholder="write your message..."

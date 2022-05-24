@@ -10,6 +10,7 @@ function SearchDropdown({ items, onChange, searching }) {
         id="hotelSearch"
         className="hero__search"
         onChange={onChange}
+        placeholder="Search..."
       />
       {searching && (
         <ListGroup className="searchDropdown">

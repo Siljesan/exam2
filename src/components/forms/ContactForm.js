@@ -27,7 +27,7 @@ function ContactForm({ sendContact }) {
       ) : (
         <form className="contactForm" onSubmit={handleSubmit(onSubmit)}>
           <label>
-            Enter your email:
+            Enter your email
             <input {...register("email")} placeholder="email..." id="email" />
             {errors.email && (
               <span className="contactForm__error">{errors.email.message}</span>
@@ -35,7 +35,7 @@ function ContactForm({ sendContact }) {
           </label>
 
           <label>
-            Enter subject:
+            Enter subject
             <input
               {...register("subject")}
               placeholder="subject..."
@@ -49,7 +49,7 @@ function ContactForm({ sendContact }) {
           </label>
 
           <label>
-            Enter your message:
+            Enter your message
             <textarea
               {...register("message")}
               placeholder="write your message..."

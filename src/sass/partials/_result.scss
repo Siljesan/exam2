@@ -27,6 +27,10 @@
       color: white;
       font-family: $heading-font;
       font-size: 22px;
+      &:hover {
+        background-color: white;
+        color: $secondary-color;
+      }
     }
   }
   @media (max-width: 1200px) {
