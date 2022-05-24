@@ -56,24 +56,26 @@ function EstablishmentForm({ addEstablishment }) {
             )}
           </label>
 
-          <label>
-            Image url
-            <input {...register("coverimageurl")} />
-            {errors.coverimageurl && (
-              <span className="establishmentForm__error">
-                {errors.coverimageurl.message}
-              </span>
-            )}
-          </label>
+          <div className="establishmentForm__flex">
+            <label>
+              Image url
+              <input {...register("coverimageurl")} />
+              {errors.coverimageurl && (
+                <span className="establishmentForm__error">
+                  {errors.coverimageurl.message}
+                </span>
+              )}
+            </label>
 
-          <label>
-            Featured{" "}
-            <input
-              className="establishmentForm__featured"
-              {...register("featured")}
-              type="checkbox"
-            />
-          </label>
+            <label>
+              Featured{" "}
+              <input
+                className="establishmentForm__featured"
+                {...register("featured")}
+                type="checkbox"
+              />
+            </label>
+          </div>
 
           <button>Add establishment</button>
         </form>

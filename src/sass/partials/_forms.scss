@@ -58,6 +58,13 @@
   &__error {
     color: red;
   }
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+    label {
+      width: 40%;
+    }
+  }
   &__featured {
     border: solid 1px $secondary-color;
   }
