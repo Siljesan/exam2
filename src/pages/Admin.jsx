@@ -43,8 +43,7 @@ function Admin() {
 
   return (
     <div className='content'>
-    <div>Admin</div>
-    <Heading as={"h2"}>Inbox</Heading>
+    <Heading>Inbox</Heading>
     <section className='adminCont'>
       <AdminEnquiries />
       <AdminContact />
