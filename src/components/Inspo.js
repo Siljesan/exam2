@@ -30,7 +30,7 @@ function Inspo() {
   if (hotel.length === 0) {
     return (
       <div className="loading">
-        <img src={loading} />
+        <img src={loading} alt="loading" />
       </div>
     );
   }
@@ -46,6 +46,7 @@ function Inspo() {
                 <img
                   className="card__img"
                   src={hotel.attributes.coverimageurl}
+                  alt={`${hotel.attributes.title} in bergen`}
                 />
                 <div className="card__text">
                   <Heading as={"h3"}>{hotel.attributes.title}</Heading>

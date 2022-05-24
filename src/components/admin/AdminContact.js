@@ -38,7 +38,7 @@ function AdminContact() {
   if (contact.length === 0) {
     return (
       <div className="loading">
-        <img src={loading} />
+        <img src={loading} alt="loading" />
       </div>
     );
   }

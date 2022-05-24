@@ -5,11 +5,10 @@ import { Heading } from '../components/styles/StyledHeadings'
 import { useToggle } from '../hooks/useToggle';
 import AuthContext from '../context/AuthContext';
 import useAxios from '../hooks/useAxios';
-import { ENQUIRY_PATH, POPULATE } from '../utils/api';
+import { ENQUIRY_PATH } from '../utils/api';
 import { Link } from 'react-router-dom';
 
 function Admin() {
-  const [enquiries, setEnquiries] = useState([]);
   const [auth, setAuth] = useContext(AuthContext);
   const [toggle, setToggle] = useToggle();
   const [error, setError] = useState();
@@ -18,9 +17,8 @@ function Admin() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await http.get(ENQUIRY_PATH + POPULATE);
-      console.log(response.data.data);
-      setEnquiries(response.data.data);
+      const response = await http.get(ENQUIRY_PATH);
+      console.log(response)
     };
     fetchData().catch((error) => setError(error));
   }, [toggle, auth]);

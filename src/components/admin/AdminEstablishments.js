@@ -60,7 +60,7 @@ function AdminEstablishments() {
   if (establishments.length === 0) {
     return (
       <div className="loading">
-        <img src={loading} />
+        <img src={loading} alt="loading" />
       </div>
     );
   }
@@ -101,7 +101,10 @@ function AdminEstablishments() {
                   <td>{est.attributes.punchline}</td>
                   <td>{est.attributes.description}</td>
                   <td>
-                    <img src={est.attributes.coverimageurl} />
+                    <img
+                      src={est.attributes.coverimageurl}
+                      alt={`${hotel.attributes.title} in bergen`}
+                    />
                   </td>
                   <td>
                     <button onClick={deleteBtn}>

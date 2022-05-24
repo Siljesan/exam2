@@ -1,6 +1,5 @@
 import { Modal } from "react-bootstrap";
 import React from "react";
-import { Heading } from "./styles/StyledHeadings";
 import EnquiryForm from "./forms/EnquiryForm";
 import { ENQUIRY_URL, POPULATE } from "../utils/api";
 import axios from "axios";

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useAxios from "../../hooks/useAxios";
-import { UPLOAD_PATH, UPLOAD_URL } from "../../utils/api";
+import { UPLOAD_PATH } from "../../utils/api";
 
 function MediaUpload() {
   const [selectedFile, setSelectedFile] = useState();

@@ -1,7 +1,6 @@
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
-import { confirmAlert } from "react-confirm-alert";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import useAxios from "../../hooks/useAxios";
@@ -39,7 +38,7 @@ function AdminEnquiries() {
   if (enquiries.length === 0) {
     return (
       <div className="loading">
-        <img src={loading} />
+        <img src={loading} alt="loading" />
       </div>
     );
   }

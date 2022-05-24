@@ -32,7 +32,7 @@ function HotelCards() {
   if (hotel.length === 0) {
     return (
       <div className="loading content">
-        <img src={loading} />
+        <img src={loading} alt="loading" />
       </div>
     );
   }
@@ -70,6 +70,7 @@ function HotelCards() {
                     <img
                       className="card__img"
                       src={hotel.attributes.coverimageurl}
+                      alt={`${hotel.attributes.title} in bergen`}
                     />
                     <div className="card__text">
                       <Heading as={"h3"}>{hotel.attributes.title}</Heading>
@@ -85,6 +86,7 @@ function HotelCards() {
                     <img
                       className="card__img"
                       src={hotel.attributes.coverimageurl}
+                      alt={`${hotel.attributes.title} in bergen`}
                     />
                     <div className="card__text">
                       <Heading as={"h3"}>{hotel.attributes.title}</Heading>

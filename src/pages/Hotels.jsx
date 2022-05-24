@@ -1,6 +1,5 @@
 import React from 'react'
 import HotelCards from '../components/HotelCards'
-import { Heading } from '../components/styles/StyledHeadings'
 
 function Hotels() {
   return (

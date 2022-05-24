@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom'
 import EnquiryModal from '../components/EnquiryModal';
 import { Heading } from '../components/styles/StyledHeadings';
 import { ESTABLISHMENT_URL } from '../utils/api';
-import { Modal } from "react-bootstrap";
 require("react-bootstrap/ModalHeader")
 
 function Result() {
@@ -49,7 +48,7 @@ function Result() {
                 <button onClick={() => setModal(true)}>Send booking enquiry</button>
             </div>
         </div>
-        <img className='resultImg' src={hotel.attributes.coverimageurl} />
+        <img className='resultImg' src={hotel.attributes.coverimageurl} alt={`${hotel.attributes.title} in bergen`}/>
         </div>
         <EnquiryModal show={modal} onHide={() => setModal(false)} />
   </div>
