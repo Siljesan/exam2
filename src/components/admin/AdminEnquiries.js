@@ -11,7 +11,7 @@ import loading from "../../Spin-1s-200px.gif";
 
 function AdminEnquiries() {
   const [enquiries, setEnquiries] = useState([]);
-  const [auth, setAuth] = useContext(AuthContext);
+  const [auth] = useContext(AuthContext);
   const [toggle, setToggle] = useToggle();
   const [error, setError] = useState();
 

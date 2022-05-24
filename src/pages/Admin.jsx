@@ -2,15 +2,13 @@ import React, { useContext, useEffect, useState } from 'react'
 import AdminEnquiries from '../components/admin/AdminEnquiries'
 import AdminContact from '../components/admin/AdminContact'
 import { Heading } from '../components/styles/StyledHeadings'
-import { useToggle } from '../hooks/useToggle';
 import AuthContext from '../context/AuthContext';
 import useAxios from '../hooks/useAxios';
 import { ENQUIRY_PATH } from '../utils/api';
 import { Link } from 'react-router-dom';
 
 function Admin() {
-  const [auth, setAuth] = useContext(AuthContext);
-  const [toggle, setToggle] = useToggle();
+  const [auth] = useContext(AuthContext);
   const [error, setError] = useState();
 
   const http = useAxios();
@@ -21,7 +19,7 @@ function Admin() {
       console.log(response)
     };
     fetchData().catch((error) => setError(error));
-  }, [toggle, auth]);
+  }, [auth]);
 
   if (error) {
     return (

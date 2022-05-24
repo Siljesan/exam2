@@ -13,7 +13,7 @@ import loading from "../../Spin-1s-200px.gif";
 
 function AdminEstablishments() {
   const [establishments, setEstablishments] = useState([]);
-  const [auth, setAuth] = useContext(AuthContext);
+  const [auth] = useContext(AuthContext);
   const [toggle, setToggle] = useToggle();
   const [error, setError] = useState();
 
