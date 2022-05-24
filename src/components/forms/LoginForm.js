@@ -10,7 +10,7 @@ import { Heading } from "../styles/StyledHeadings";
 
 function LoginForm() {
   const navigate = useNavigate();
-  const [setAuth] = useContext(AuthContext);
+  const [auth, setAuth] = useContext(AuthContext);
   const [error, setError] = useState();
 
   const {
@@ -30,6 +30,7 @@ function LoginForm() {
     setAuth(responseData.data.jwt);
 
     navigate("/admin");
+    console.log(auth);
   };
 
   const onSubmit = (formData) => {
