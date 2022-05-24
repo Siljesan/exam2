@@ -19,6 +19,8 @@ function Admin() {
       console.log(response)
     };
     fetchData().catch((error) => setError(error));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth]);
 
   if (error) {

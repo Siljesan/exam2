@@ -12,13 +12,15 @@ function Result() {
     const [error, setError] = useState(false);
     const [modal, setModal] = useState(false);
 
-    useEffect(() => {
+    useEffect(() => { 
         const fetchData = async () => {
             const response = await axios.get(ESTABLISHMENT_URL + location);
             console.log(response.data.data);
             setHotel(response.data.data);
         }
         fetchData().catch((error) => setError(error))
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     if(error){

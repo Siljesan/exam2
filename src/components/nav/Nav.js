@@ -4,7 +4,7 @@ import AuthContext from "../../context/AuthContext";
 import Menu from "./Menu";
 
 function Nav() {
-  const [auth, setAuth] = useContext(AuthContext);
+  const [auth] = useContext(AuthContext);
 
   return (
     <div className="nav">

@@ -10,7 +10,7 @@ import { Heading } from "../styles/StyledHeadings";
 
 function LoginForm() {
   const navigate = useNavigate();
-  const [auth, setAuth] = useContext(AuthContext);
+  const [setAuth] = useContext(AuthContext);
   const [error, setError] = useState();
 
   const {

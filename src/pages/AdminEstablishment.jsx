@@ -10,7 +10,7 @@ function AdminEstablishment() {
   const [auth] = useContext(AuthContext);
   const [error, setError] = useState();
 
-  const http = useAxios();
+const http = useAxios();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,6 +18,8 @@ function AdminEstablishment() {
       console.log(response);
     };
     fetchData().catch((error) => setError(error));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[auth]);
 
   if (error) {

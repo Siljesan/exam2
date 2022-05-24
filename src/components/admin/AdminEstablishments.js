@@ -26,6 +26,8 @@ function AdminEstablishments() {
       setEstablishments(response.data.data);
     };
     fetchData().catch((error) => setError(error));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggle, auth]);
 
   const addEstablishment = async (formData) => {
