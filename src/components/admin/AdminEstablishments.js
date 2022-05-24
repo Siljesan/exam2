@@ -71,7 +71,7 @@ function AdminEstablishments() {
     <>
       <section>
         <Heading as={"h2"}>Establishments</Heading>
-        <Table bordered className="table">
+        <Table responsive bordered className="table">
           <thead className="table__h">
             <tr>
               <th>ID</th>
