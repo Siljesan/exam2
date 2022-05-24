@@ -35,6 +35,7 @@ function AdminEstablishments() {
         punchline: formData.punchline,
         description: formData.description,
         coverimageurl: formData.coverimageurl,
+        featured: formData.featured,
       },
     };
     const responseData = await http.post(ESTABLISHMENT_PATH, options);

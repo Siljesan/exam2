@@ -27,7 +27,7 @@ function EstablishmentForm({ addEstablishment }) {
       ) : (
         <form className="establishmentForm" onSubmit={handleSubmit(onSubmit)}>
           <label>
-            Establishment title:
+            Establishment title
             <input {...register("title")} />
             {errors.title && (
               <span className="establishmentForm__error">
@@ -37,7 +37,7 @@ function EstablishmentForm({ addEstablishment }) {
           </label>
 
           <label>
-            Establishment punchline:
+            Establishment punchline
             <input {...register("punchline")} />
             {errors.punchline && (
               <span className="establishmentForm__error">
@@ -47,7 +47,7 @@ function EstablishmentForm({ addEstablishment }) {
           </label>
 
           <label>
-            Establishment description:
+            Establishment description
             <textarea {...register("description")} />
             {errors.description && (
               <span className="establishmentForm__error">
@@ -57,13 +57,22 @@ function EstablishmentForm({ addEstablishment }) {
           </label>
 
           <label>
-            Image url:
+            Image url
             <input {...register("coverimageurl")} />
             {errors.coverimageurl && (
               <span className="establishmentForm__error">
                 {errors.coverimageurl.message}
               </span>
             )}
+          </label>
+
+          <label>
+            Featured{" "}
+            <input
+              className="establishmentForm__featured"
+              {...register("featured")}
+              type="checkbox"
+            />
           </label>
 
           <button>Add establishment</button>
