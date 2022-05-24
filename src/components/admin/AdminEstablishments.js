@@ -103,7 +103,7 @@ function AdminEstablishments() {
                   <td>
                     <img
                       src={est.attributes.coverimageurl}
-                      alt={`${hotel.attributes.title} in bergen`}
+                      alt={`${est.attributes.title} in bergen`}
                     />
                   </td>
                   <td>
