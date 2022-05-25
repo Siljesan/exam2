@@ -3,8 +3,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { EnquirySchema } from "../../utils/Schemas";
 import { Heading } from "../styles/StyledHeadings";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 function EnquiryForm({ sendEnquiry }) {
   const [error, setError] = useState();

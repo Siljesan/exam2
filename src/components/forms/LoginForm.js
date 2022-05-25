@@ -6,7 +6,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AUTH_URL } from "../../utils/api";
 import AuthContext from "../../context/AuthContext";
-import { Heading } from "../styles/StyledHeadings";
 
 function LoginForm() {
   const navigate = useNavigate();
