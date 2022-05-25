@@ -48,7 +48,6 @@ function EstablishmentForm({ onEstablishmentAdded }) {
   };
 
   const onSubmit = (formData) => {
-    console.log("tgst");
     sendEstablishment(formData).catch((error) => setError(error));
   };
 
@@ -92,7 +91,9 @@ function EstablishmentForm({ onEstablishmentAdded }) {
           </label>
 
           <div className="establishmentForm__flex">
-            <MediaUpload onChange={onCoverImageChanged} />
+            <div>
+              <MediaUpload onChange={onCoverImageChanged} />
+            </div>
             <label>
               Featured{" "}
               <input

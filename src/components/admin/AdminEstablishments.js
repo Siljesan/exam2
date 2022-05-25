@@ -5,7 +5,7 @@ import { Table } from "react-bootstrap";
 import AuthContext from "../../context/AuthContext";
 import useAxios from "../../hooks/useAxios";
 import { useToggle } from "../../hooks/useToggle";
-import { ESTABLISHMENT_PATH } from "../../utils/api";
+import { ESTABLISHMENT_PATH, POPULATE } from "../../utils/api";
 import EstablishmentForm from "../forms/EstablishmentForm";
 import { Heading } from "../styles/StyledHeadings";
 import loading from "../../Spin-1s-200px.gif";
@@ -20,7 +20,7 @@ function AdminEstablishments() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await http.get(ESTABLISHMENT_PATH);
+      const response = await http.get(ESTABLISHMENT_PATH + POPULATE);
       console.log(response.data.data);
       setEstablishments(response.data.data);
     };
@@ -92,7 +92,7 @@ function AdminEstablishments() {
                   <td>{est.attributes.description}</td>
                   <td>
                     <img
-                      src={est.attributes.coverimageurl}
+                      src={est.attributes.coverimage.data.attributes.url}
                       alt={`${est.attributes.title} in bergen`}
                     />
                   </td>

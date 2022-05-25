@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ESTABLISHMENT_URL } from "../utils/api";
+import { ESTABLISHMENT_URL, POPULATE } from "../utils/api";
 import { Heading } from "./styles/StyledHeadings";
 import loading from "../Spin-1s-200px.gif";
 
@@ -11,7 +11,7 @@ function Inspo() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(ESTABLISHMENT_URL);
+      const response = await axios.get(ESTABLISHMENT_URL + POPULATE);
       console.log(response);
       setHotel(response.data.data);
     };
@@ -45,7 +45,7 @@ function Inspo() {
               <Link to={`/${hotel.id}`}>
                 <img
                   className="card__img"
-                  src={hotel.attributes.coverimageurl}
+                  src={hotel.attributes.coverimage.data.attributes.url}
                   alt={`${hotel.attributes.title} in bergen`}
                 />
                 <div className="card__text">
