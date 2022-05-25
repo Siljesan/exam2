@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import useAxios from "../../hooks/useAxios";
+import { ESTABLISHMENT_PATH } from "../../utils/api";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { EstablishmentSchema } from "../../utils/Schemas";
 import { Heading } from "../styles/StyledHeadings";
+import MediaUpload from "../admin/MediaUpload";
 
-function EstablishmentForm({ addEstablishment }) {
+function EstablishmentForm({ onEstablishmentAdded }) {
+  const [coverImage, setCoverImage] = useState();
   const [error, setError] = useState();
+  const http = useAxios();
+
   const {
     register,
     handleSubmit,
@@ -14,9 +20,38 @@ function EstablishmentForm({ addEstablishment }) {
     resolver: yupResolver(EstablishmentSchema),
   });
 
-  const onSubmit = (formData) => {
-    addEstablishment(formData).catch((error) => setError(error));
+  const onCoverImageChanged = (file) => {
+    setCoverImage(file);
   };
+
+  const sendEstablishment = async (formData) => {
+    const data = {
+      title: formData.title,
+      punchline: formData.punchline,
+      description: formData.description,
+      featured: formData.featured,
+    };
+
+    let body = new FormData();
+    body.append("files.coverimage", coverImage, coverImage.name);
+    body.append("data", JSON.stringify(data));
+
+    const responseData = await http.post(ESTABLISHMENT_PATH, body);
+
+    console.log(responseData);
+
+    if (responseData.statusText == "OK") {
+      onEstablishmentAdded && onEstablishmentAdded();
+    } else {
+      setError(responseData.statusText);
+    }
+  };
+
+  const onSubmit = (formData) => {
+    console.log("tgst");
+    sendEstablishment(formData).catch((error) => setError(error));
+  };
+
   return (
     <>
       {error ? (
@@ -57,16 +92,7 @@ function EstablishmentForm({ addEstablishment }) {
           </label>
 
           <div className="establishmentForm__flex">
-            <label>
-              Image url
-              <input {...register("coverimageurl")} />
-              {errors.coverimageurl && (
-                <span className="establishmentForm__error">
-                  {errors.coverimageurl.message}
-                </span>
-              )}
-            </label>
-
+            <MediaUpload onChange={onCoverImageChanged} />
             <label>
               Featured{" "}
               <input
@@ -76,8 +102,7 @@ function EstablishmentForm({ addEstablishment }) {
               />
             </label>
           </div>
-
-          <button>Add establishment</button>
+          <button type="submit">Add establishment</button>
         </form>
       )}
     </>

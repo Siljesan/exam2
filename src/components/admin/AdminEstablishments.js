@@ -8,7 +8,6 @@ import { useToggle } from "../../hooks/useToggle";
 import { ESTABLISHMENT_PATH } from "../../utils/api";
 import EstablishmentForm from "../forms/EstablishmentForm";
 import { Heading } from "../styles/StyledHeadings";
-import MediaUpload from "./MediaUpload";
 import loading from "../../Spin-1s-200px.gif";
 
 function AdminEstablishments() {
@@ -30,18 +29,7 @@ function AdminEstablishments() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggle, auth]);
 
-  const addEstablishment = async (formData) => {
-    const options = {
-      data: {
-        title: formData.title,
-        punchline: formData.punchline,
-        description: formData.description,
-        coverimageurl: formData.coverimageurl,
-        featured: formData.featured,
-      },
-    };
-    const responseData = await http.post(ESTABLISHMENT_PATH, options);
-    console.log(responseData);
+  const onEstablishmentAdded = () => {
     setToggle();
   };
 
@@ -128,9 +116,10 @@ function AdminEstablishments() {
               <button onClick={addAnother}>Add another</button>
             </div>
           ) : (
-            <EstablishmentForm addEstablishment={addEstablishment} />
+            <>
+              <EstablishmentForm onEstablishmentAdded={onEstablishmentAdded} />
+            </>
           )}
-          <MediaUpload />
         </div>
       </section>
     </>
