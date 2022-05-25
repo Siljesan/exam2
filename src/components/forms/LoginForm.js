@@ -42,33 +42,31 @@ function LoginForm() {
   return (
     <>
       {error ? (
-        <div>
-          <Heading as={"h2"}>Something went wrong</Heading>
-          <p>{error.message}</p>
+        <div className="loginForm__error">
+          <p>Please enter the right credentials</p>
         </div>
       ) : (
-        <form className="loginForm" onSubmit={handleSubmit(onSubmit)}>
-          <label>
-            Enter your email
-            <input {...register("email")} />
-            {errors.email && (
-              <span className="loginForm__error">{errors.email.message}</span>
-            )}
-          </label>
-
-          <label>
-            Enter your password
-            <input {...register("password")} type="password" />
-            {errors.password && (
-              <span className="loginForm__error">
-                {errors.password.message}
-              </span>
-            )}
-          </label>
-
-          <button>Send</button>
-        </form>
+        ""
       )}
+      <form className="loginForm" onSubmit={handleSubmit(onSubmit)}>
+        <label>
+          Enter your email
+          <input {...register("email")} />
+          {errors.email && (
+            <span className="loginForm__error">{errors.email.message}</span>
+          )}
+        </label>
+
+        <label>
+          Enter your password
+          <input {...register("password")} type="password" />
+          {errors.password && (
+            <span className="loginForm__error">{errors.password.message}</span>
+          )}
+        </label>
+
+        <button>Send</button>
+      </form>
     </>
   );
 }
