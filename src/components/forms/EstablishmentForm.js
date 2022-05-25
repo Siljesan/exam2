@@ -40,7 +40,7 @@ function EstablishmentForm({ onEstablishmentAdded }) {
 
     console.log(responseData);
 
-    if (responseData.statusText == "OK") {
+    if (responseData.statusText === "OK") {
       onEstablishmentAdded && onEstablishmentAdded();
     } else {
       setError(responseData.statusText);
