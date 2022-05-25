@@ -3,9 +3,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { EnquirySchema } from "../../utils/Schemas";
 import { Heading } from "../styles/StyledHeadings";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function EnquiryForm({ sendEnquiry }) {
   const [error, setError] = useState();
+
   const {
     register,
     handleSubmit,
@@ -34,14 +37,27 @@ function EnquiryForm({ sendEnquiry }) {
             )}
           </label>
 
-          <label>
-            Enter date of visit from - until
-            <input {...register("date")} placeholder="date..." id="date" />
-            {errors.date && (
-              <span className="enquiryForm__error">{errors.date.message}</span>
-            )}
-          </label>
-
+          <div className="flex">
+            <label>
+              Enter date from
+              <input {...register("datefrom")} placeholder="DD/MM/YYYY" />
+              {errors.datefrom && (
+                <span className="enquiryForm__error">
+                  {errors.datefrom.message}
+                </span>
+              )}
+            </label>
+            /
+            <label>
+              until
+              <input {...register("dateto")} placeholder="DD/MM/YYYY" />
+              {errors.dateto && (
+                <span className="enquiryForm__error">
+                  {errors.dateto.message}
+                </span>
+              )}
+            </label>
+          </div>
           <label>
             Enter additional information
             <textarea

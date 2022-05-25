@@ -15,7 +15,8 @@ function EnquiryModal(props) {
     const options = {
       data: {
         email: formData.email,
-        date: formData.date,
+        datefrom: formData.datefrom,
+        dateto: formData.dateto,
         information: formData.information,
         establishment: location,
       },

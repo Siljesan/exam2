@@ -66,7 +66,9 @@ function AdminEnquiries() {
             <div>
               <Heading as={"h4"}>{enq.attributes.email}</Heading>
               <p>{enq.attributes.establishment.data.attributes.title}</p>
-              <p>{enq.attributes.date}</p>
+              <p>
+                {enq.attributes.datefrom} - {enq.attributes.dateto}
+              </p>
               <p>{enq.attributes.information}</p>
             </div>
             <div className="cont__icon">

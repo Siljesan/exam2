@@ -5,7 +5,8 @@ export const EnquirySchema = yup.object().shape({
     .string()
     .required("Please enter an email address")
     .email("Please enter a valid email address"),
-  date: yup.string().required("Please enter planned date of visit"),
+  datefrom: yup.string().required("Please enter date of arrival"),
+  dateto: yup.string().required("Please enter date of check out"),
   information: yup
     .string()
     .required("Please enter additional information")

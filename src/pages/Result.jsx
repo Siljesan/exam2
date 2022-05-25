@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import EnquiryModal from '../components/EnquiryModal';
 import { Heading } from '../components/styles/StyledHeadings';
-import { ESTABLISHMENT_URL } from '../utils/api';
+import { ESTABLISHMENT_URL, POPULATE } from '../utils/api';
 require("react-bootstrap/ModalHeader")
 
 function Result() {
@@ -14,7 +14,7 @@ function Result() {
 
     useEffect(() => { 
         const fetchData = async () => {
-            const response = await axios.get(ESTABLISHMENT_URL + location);
+            const response = await axios.get(ESTABLISHMENT_URL + location + POPULATE);
             console.log(response.data.data);
             setHotel(response.data.data);
         }
@@ -50,7 +50,7 @@ function Result() {
                 <button onClick={() => setModal(true)}>Send booking enquiry</button>
             </div>
         </div>
-        <img className='resultImg' src={hotel.attributes.coverimageurl} alt={`${hotel.attributes.title} in bergen`}/>
+        <img className='resultImg' src={hotel.attributes.coverimage.data.attributes.url} alt={`${hotel.attributes.title} in bergen`}/>
         </div>
         <EnquiryModal show={modal} onHide={() => setModal(false)} />
   </div>
