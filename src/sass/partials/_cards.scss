@@ -4,7 +4,7 @@
   flex-wrap: wrap;
   .card {
     max-width: 300px;
-    width: 33%;
+    width: 32%;
     background-color: $secondary-color;
     color: white;
     border-radius: 5px;
@@ -24,7 +24,7 @@
       text-decoration: none;
       color: white;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 1200px) {
       margin: 0;
       margin-top: 0.5rem;
     }

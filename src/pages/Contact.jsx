@@ -24,7 +24,7 @@ function Contact() {
     <div className='content'>
         <div>
         <Heading>Get in touch</Heading>
-        <p>We love to hear what you have to say, send us a Message and we will get back to you as soon as possible</p>
+        <p>We love to hear what you have to say, send us a message and we will get back to you as soon as possible</p>
         </div>
         {toggle ? <div>Thank you! We will reply to your message as soon as possible.</div> : <ContactForm sendContact={sendContact}/>}
     </div>

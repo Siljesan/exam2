@@ -54,7 +54,7 @@ function HotelCards() {
 
   return (
     <>
-      <Heading>Where to?</Heading>
+      <Heading>Discover the hotels</Heading>
       <input
         type={"text"}
         placeholder="Search..."

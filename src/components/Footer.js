@@ -2,12 +2,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { brands } from "@fortawesome/fontawesome-svg-core/import.macro";
 import React from "react";
 import Menu from "./nav/Menu";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
     <footer className="footer">
       <Menu />
-      <p className="footer__logo">Holidaze</p>
+      <Link to="/" className="footer__logo">
+        HOLIDAZE
+      </Link>
       <div className="footer__icons">
         <FontAwesomeIcon
           icon={brands("twitter")}

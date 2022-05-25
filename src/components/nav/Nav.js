@@ -9,10 +9,10 @@ function Nav() {
   return (
     <div className="nav">
       {auth ? (
-        <div className="nav__logo">Holidaze</div>
+        <div className="nav__logo">HOLIDAZE</div>
       ) : (
         <Link className="nav__logo" to="/">
-          Holidaze
+          HOLIDAZE
         </Link>
       )}
       <Menu />

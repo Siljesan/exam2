@@ -40,7 +40,6 @@ function Hero() {
         <div className="hero__text">
           <HeroHeading>Discover Bergen</HeroHeading>
           <div className="hero__drop">
-            <p>Where to?</p>
             <SearchDropdown
               items={searchItems}
               onChange={onChange}
