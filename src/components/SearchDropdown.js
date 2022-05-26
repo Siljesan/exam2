@@ -1,19 +1,32 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function SearchDropdown({ items, onChange, searching }) {
+  const listRef = useRef();
+  const inputRef = useRef();
+
+  useEffect(() => {
+    document.addEventListener("click", (event) => {
+      listRef.current.style.display = "none";
+    });
+    inputRef.current.addEventListener("click", (event) => {
+      listRef.current.style.display = "flex";
+    });
+  }, []);
+
   return (
     <>
       <input
         type="text"
         id="hotelSearch"
         className="hero__search"
+        ref={inputRef}
         onChange={onChange}
         placeholder="Search..."
       />
       {searching && (
-        <ListGroup className="searchDropdown">
+        <ListGroup className="searchDropdown" ref={listRef}>
           {items.map((item, idx) => {
             return (
               <Link to={`/${item.id}`} key={idx}>
