@@ -11,6 +11,7 @@ function SearchDropdown({ items, onChange, searching }) {
       listRef.current.style.display = "none";
     });
     inputRef.current.addEventListener("click", (event) => {
+      event.stopPropagation();
       listRef.current.style.display = "flex";
     });
   }, []);
@@ -25,17 +26,21 @@ function SearchDropdown({ items, onChange, searching }) {
         onChange={onChange}
         placeholder="Search..."
       />
-      {searching && (
-        <ListGroup className="searchDropdown" ref={listRef}>
-          {items.map((item, idx) => {
-            return (
-              <Link to={`/${item.id}`} key={idx}>
-                <ListGroup.Item action>{item.attributes.title}</ListGroup.Item>
-              </Link>
-            );
-          })}
-        </ListGroup>
-      )}
+      <ListGroup className="searchDropdown" ref={listRef}>
+        {searching && (
+          <>
+            {items.map((item, idx) => {
+              return (
+                <Link to={`/${item.id}`} key={idx}>
+                  <ListGroup.Item action>
+                    {item.attributes.title}
+                  </ListGroup.Item>
+                </Link>
+              );
+            })}
+          </>
+        )}
+      </ListGroup>
     </>
   );
 }
