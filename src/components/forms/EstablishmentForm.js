@@ -12,6 +12,7 @@ function EstablishmentForm({ onEstablishmentAdded }) {
   const [error, setError] = useState();
   const http = useAxios();
 
+  // react hook form checks for errors, and register formData.
   const {
     register,
     handleSubmit,
@@ -20,10 +21,12 @@ function EstablishmentForm({ onEstablishmentAdded }) {
     resolver: yupResolver(EstablishmentSchema),
   });
 
+  // sets the file data from MediaUpload.
   const onCoverImageChanged = (file) => {
     setCoverImage(file);
   };
 
+  //collects the formData.
   const sendEstablishment = async (formData) => {
     const data = {
       title: formData.title,
@@ -32,14 +35,18 @@ function EstablishmentForm({ onEstablishmentAdded }) {
       featured: formData.featured,
     };
 
+    // appends the formData into the FormData format.
     let body = new FormData();
+    // files from the MediaUpload
     body.append("files.coverimage", coverImage, coverImage.name);
+    // data from formData
     body.append("data", JSON.stringify(data));
 
     const responseData = await http.post(ESTABLISHMENT_PATH, body);
-
     console.log(responseData);
 
+    // checks if the data was sent successfully and calls function
+    // in AdminEstablishment, if not sets error message.
     if (responseData.statusText === "OK") {
       onEstablishmentAdded && onEstablishmentAdded();
     } else {
@@ -47,6 +54,7 @@ function EstablishmentForm({ onEstablishmentAdded }) {
     }
   };
 
+  // Runs funtion above and sets error if error is catched.
   const onSubmit = (formData) => {
     sendEstablishment(formData).catch((error) => setError(error));
   };

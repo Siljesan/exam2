@@ -18,6 +18,7 @@ function Hero() {
     fetchData().catch(console.error);
   }, []);
 
+  // runs when search input is changed, and sends filtered data to SearchDropdown
   const onChange = (event) => {
     if (event.target.value.length > 1) {
       setSearching(true);
@@ -25,6 +26,7 @@ function Hero() {
     } else {
       setSearching(false);
     }
+    //filters through the titles from the data to return what mathces the value of the input
     const filteredData = hotel.filter((item) => {
       return Object.values(item.attributes.title)
         .join("")

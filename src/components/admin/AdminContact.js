@@ -7,7 +7,7 @@ import useAxios from "../../hooks/useAxios";
 import { useToggle } from "../../hooks/useToggle";
 import { CONTACT_PATH } from "../../utils/api";
 import { Heading } from "../styles/StyledHeadings";
-import loading from "../../Spin-1s-200px.gif";
+import loading from "../../media/Spin-1s-200px.gif";
 
 function AdminContact() {
   const [contact, setContact] = useState([]);
@@ -17,6 +17,9 @@ function AdminContact() {
 
   const http = useAxios();
 
+  // Fetching data as authorized user with useAxios.
+  // The eslint rule inside removes warnings about missing dependencies, from using http
+  // inside the function but not including it in the dependencies.
   useEffect(() => {
     const fetchData = async () => {
       const response = await http.get(CONTACT_PATH);
@@ -28,6 +31,7 @@ function AdminContact() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggle, auth]);
 
+  // If the fetch returns an error, this display a message.
   if (error) {
     return (
       <div>

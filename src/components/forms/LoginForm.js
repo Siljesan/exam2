@@ -12,6 +12,7 @@ function LoginForm() {
   const [auth, setAuth] = useContext(AuthContext);
   const [error, setError] = useState();
 
+  // react hook form checks for errors, and register formData.
   const {
     register,
     handleSubmit,
@@ -20,18 +21,22 @@ function LoginForm() {
     resolver: yupResolver(LoginSchema),
   });
 
+  // sends data to login user.
   const login = async (formData) => {
     const responseData = await axios.post(AUTH_URL, {
       identifier: formData.email,
       password: formData.password,
     });
 
+    // if successed login, jwt token is saved in the AuthContext
+    // and user is navigated to adminpage.
     setAuth(responseData.data.jwt);
 
     navigate("/admin");
     console.log(auth);
   };
 
+  // sends formData to function above and catches error.
   const onSubmit = (formData) => {
     console.log("Form Data: ", formData);
 

@@ -11,6 +11,7 @@ function EnquiryModal(props) {
   const { location } = useParams();
   const [toggle, setToggle] = useToggle();
 
+  //sends data with formData from EnquiryFrom.
   const sendEnquiry = async (formData) => {
     const options = {
       data: {
@@ -23,6 +24,7 @@ function EnquiryModal(props) {
     };
     const responseData = await axios.post(ENQUIRY_URL + POPULATE, options);
     console.log(responseData);
+    // toggles to display message
     setToggle();
   };
 

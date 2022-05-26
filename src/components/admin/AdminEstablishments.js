@@ -8,7 +8,7 @@ import { useToggle } from "../../hooks/useToggle";
 import { ESTABLISHMENT_PATH, POPULATE } from "../../utils/api";
 import EstablishmentForm from "../forms/EstablishmentForm";
 import { Heading } from "../styles/StyledHeadings";
-import loading from "../../Spin-1s-200px.gif";
+import loading from "../../media/Spin-1s-200px.gif";
 
 function AdminEstablishments() {
   const [establishments, setEstablishments] = useState([]);
@@ -18,6 +18,9 @@ function AdminEstablishments() {
 
   const http = useAxios();
 
+  // Fetching data as authorized user with useAxios.
+  // The eslint rule inside removes warnings about missing dependencies, from using http
+  // inside the function but not including it in the dependencies.
   useEffect(() => {
     const fetchData = async () => {
       const response = await http.get(ESTABLISHMENT_PATH + POPULATE);
@@ -29,15 +32,19 @@ function AdminEstablishments() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggle, auth]);
 
+  // Using setToggle to display the establishment that has been added in the EstablishmentForm
+  // in the establishment table, without having to refresh.
   const onEstablishmentAdded = () => {
     setToggle();
   };
 
+  // Display's the EstablishmentForm when function runs.
   const addAnother = (e) => {
     e.preventDefault();
     setToggle();
   };
 
+  // If the fetch returns an error, this display a message.
   if (error) {
     return (
       <div>

@@ -6,6 +6,8 @@ import { Heading } from "../styles/StyledHeadings";
 
 function ContactForm({ sendContact }) {
   const [error, setError] = useState();
+
+  // react hook form checks for errors, and register formData.
   const {
     register,
     handleSubmit,
@@ -14,6 +16,7 @@ function ContactForm({ sendContact }) {
     resolver: yupResolver(ContactSchema),
   });
 
+  // sends data and sets error to display error message.
   const onSubmit = (formData) => {
     sendContact(formData).catch((error) => setError(error));
   };

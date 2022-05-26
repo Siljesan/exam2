@@ -4,6 +4,8 @@ function MediaUpload({ onChange }) {
   const [selectedFile, setSelectedFile] = useState();
   const [isSelected, setIsSelected] = useState(false);
 
+  // Whenever a change is made, the file from the input is set and will
+  // send data to EstablishmentFrom.
   const handleChange = (event) => {
     let f = event.target.files[0];
     console.log(f);

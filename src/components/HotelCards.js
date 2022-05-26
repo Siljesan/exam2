@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ESTABLISHMENT_URL, POPULATE } from "../utils/api";
 import { Heading } from "./styles/StyledHeadings";
-import loading from "../Spin-1s-200px.gif";
+import loading from "../media/Spin-1s-200px.gif";
 
 function HotelCards() {
   const [hotel, setHotel] = useState([]);
@@ -37,6 +37,8 @@ function HotelCards() {
     );
   }
 
+  // Filter through the titles from the data to match the search input value.
+  // and sends filtered data to be displayed on the page.
   const filterItems = (searchValue) => {
     setSearchInput(searchValue);
     if (searchInput !== "") {

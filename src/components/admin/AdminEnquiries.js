@@ -7,7 +7,7 @@ import useAxios from "../../hooks/useAxios";
 import { useToggle } from "../../hooks/useToggle";
 import { ENQUIRY_PATH, POPULATE } from "../../utils/api";
 import { Heading } from "../styles/StyledHeadings";
-import loading from "../../Spin-1s-200px.gif";
+import loading from "../../media/Spin-1s-200px.gif";
 
 function AdminEnquiries() {
   const [enquiries, setEnquiries] = useState([]);
@@ -17,6 +17,9 @@ function AdminEnquiries() {
 
   const http = useAxios();
 
+  // Fetching data as authorized user with useAxios.
+  // The eslint rule inside removes warnings about missing dependencies, from using http
+  // inside the function but not including it in the dependencies.
   useEffect(() => {
     const fetchData = async () => {
       const response = await http.get(ENQUIRY_PATH + POPULATE);
@@ -28,6 +31,7 @@ function AdminEnquiries() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggle, auth]);
 
+  // If the fetch returns an error, this display a message.
   if (error) {
     return (
       <div>

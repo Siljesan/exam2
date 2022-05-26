@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ESTABLISHMENT_URL, POPULATE } from "../utils/api";
 import { Heading } from "./styles/StyledHeadings";
-import loading from "../Spin-1s-200px.gif";
+import loading from "../media/Spin-1s-200px.gif";
 
 function Inspo() {
   const [hotel, setHotel] = useState([]);

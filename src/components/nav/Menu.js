@@ -7,6 +7,8 @@ function Menu() {
 
   const navigate = useNavigate();
 
+  // Let's user logout by removing the jwt token from AuthContext
+  // and navigates back to homepage
   const logout = () => {
     setAuth(null);
     navigate("/");

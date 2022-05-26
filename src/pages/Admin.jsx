@@ -13,6 +13,9 @@ function Admin() {
 
   const http = useAxios();
 
+  // Fetching data as authorized user with useAxios.
+  // The eslint rule inside removes warnings about missing dependencies, from using http
+  // inside the function but not including it in the dependencies.
   useEffect(() => {
     const fetchData = async () => {
       const response = await http.get(ENQUIRY_PATH);
