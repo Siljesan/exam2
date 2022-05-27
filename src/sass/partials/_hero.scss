@@ -19,6 +19,14 @@
     z-index: 2;
     color: white;
   }
+  &__typeahead {
+    border: solid 2px $secondary-color;
+    border-radius: 20px;
+    opacity: 0.8;
+    .form-control {
+      border-radius: 20px;
+    }
+  }
   &__search {
     border: solid 2px $secondary-color;
     border-radius: 20px;
