@@ -2,12 +2,12 @@ import React, { useEffect, useRef } from "react";
 import { ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function SearchDropdown({ items, onChange, searching }) {
+function SearchDropdown({ home, items, onChange, searching }) {
   const listRef = useRef();
   const inputRef = useRef();
 
   useEffect(() => {
-    document.addEventListener("click", (event) => {
+    home.current.addEventListener("click", (event) => {
       listRef.current.style.display = "none";
     });
     inputRef.current.addEventListener("click", (event) => {

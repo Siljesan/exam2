@@ -4,7 +4,7 @@ import { ESTABLISHMENT_URL } from "../utils/api";
 import SearchDropdown from "./SearchDropdown";
 import { HeroHeading } from "./styles/StyledHeadings";
 
-function Hero() {
+function Hero({ home }) {
   const [hotel, setHotel] = useState([]);
   const [searchItems, setSearchItems] = useState([]);
   const [searching, setSearching] = useState(false);
@@ -43,6 +43,7 @@ function Hero() {
           <HeroHeading>Discover Bergen</HeroHeading>
           <div className="hero__drop">
             <SearchDropdown
+              home={home}
               items={searchItems}
               onChange={onChange}
               searching={searching}
