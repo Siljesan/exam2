@@ -14,6 +14,8 @@ function SearchDropdown({ home, items, onChange, searching }) {
       event.stopPropagation();
       listRef.current.style.display = "flex";
     });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
